@@ -45,13 +45,8 @@ public class CoreInitialiser{
 	
 	public static final String modid = "DummyCore";
 	public static final String modname = "DummyCore";
-	public static final String globalVersion = "2";
-	public static final String modVersion = "0";
 	public static final String mcVersion = "1.7.10";
-	public static final String modmcVersion = "1710";
-	public static final String buildVersion = "0";
-	public static final String buildPostfix = "A";
-	public static final String version = globalVersion+'.'+modVersion+'.'+modmcVersion+'.'+buildVersion+'.'+buildPostfix;
+	public static final String version = "GRADLETOKEN_VERSION";
 	
 	public static CoreInitialiser instance;
 	public static DummyConfig cfg = new DummyConfig();
