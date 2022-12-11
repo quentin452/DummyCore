@@ -1,45 +1,41 @@
 package DummyCore.ASM;
 
-import java.io.File;
-import java.util.Map;
+import static DummyCore.Core.CoreInitialiser.mcVersion;
 
 import DummyCore.Core.Core;
 import cpw.mods.fml.relauncher.FMLInjectionData;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.MCVersion;
-import static DummyCore.Core.CoreInitialiser.mcVersion;
+import java.io.File;
+import java.util.Map;
 
-@MCVersion(value=mcVersion)
-public class DCLoadingPlugin implements IFMLLoadingPlugin{
+@MCVersion(value = mcVersion)
+public class DCLoadingPlugin implements IFMLLoadingPlugin {
 
-	public DCLoadingPlugin()
-	{
-		Core.mcDir = (File) FMLInjectionData.data()[6];
-	}
-	
-	@Override
-	public String[] getASMTransformerClass() {
-		return new String[]{DCASMManager.class.getName()};
-	}
+    public DCLoadingPlugin() {
+        Core.mcDir = (File) FMLInjectionData.data()[6];
+    }
 
-	@Override
-	public String getModContainerClass() {
-		return null;
-	}
+    @Override
+    public String[] getASMTransformerClass() {
+        return new String[] {DCASMManager.class.getName()};
+    }
 
-	@Override
-	public String getSetupClass() {
-		return null;
-	}
+    @Override
+    public String getModContainerClass() {
+        return null;
+    }
 
-	@Override
-	public void injectData(Map<String, Object> data) {
-		
-	}
+    @Override
+    public String getSetupClass() {
+        return null;
+    }
 
-	@Override
-	public String getAccessTransformerClass() {
-		return null;
-	}
+    @Override
+    public void injectData(Map<String, Object> data) {}
 
+    @Override
+    public String getAccessTransformerClass() {
+        return null;
+    }
 }
