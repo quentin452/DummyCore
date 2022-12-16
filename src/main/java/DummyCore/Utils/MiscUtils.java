@@ -642,14 +642,8 @@ public class MiscUtils {
      */
     @Deprecated
     public static void drawTexturedModalRect(
-            int p_73729_1_,
-            int p_73729_2_,
-            int p_73729_3_,
-            int p_73729_4_,
-            int p_73729_5_,
-            int p_73729_6_,
-            int zLevel) {
-        DrawUtils.drawTexturedModalRect(p_73729_1_, p_73729_2_, p_73729_3_, p_73729_4_, p_73729_5_, p_73729_6_, zLevel);
+            int x, int y, int textureX, int textureY, int width, int height, int zLevel) {
+        DrawUtils.drawTexturedModalRect(x, y, textureX, textureY, width, height, zLevel);
     }
 
     /**

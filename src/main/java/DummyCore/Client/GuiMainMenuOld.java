@@ -73,7 +73,7 @@ public class GuiMainMenuOld extends GuiMainMenu implements IMainMenu {
     }
 
     @Override
-    public void drawScreen(int p_73863_1_, int p_73863_2_, float p_73863_3_) {
+    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         Tessellator tessellator = Tessellator.instance;
         short short1 = 274;
         int k = this.width / 2 - short1 / 2;
@@ -130,23 +130,23 @@ public class GuiMainMenuOld extends GuiMainMenu implements IMainMenu {
         int k1;
 
         for (k1 = 0; k1 < this.buttonList.size(); ++k1) {
-            drawButton(((GuiButton) this.buttonList.get(k1)), this.mc, p_73863_1_, p_73863_2_);
+            drawButton(((GuiButton) this.buttonList.get(k1)), this.mc, mouseX, mouseY);
         }
 
         for (k1 = 0; k1 < this.labelList.size(); ++k1) {
-            ((GuiLabel) this.labelList.get(k1)).func_146159_a(this.mc, p_73863_1_, p_73863_2_);
+            ((GuiLabel) this.labelList.get(k1)).func_146159_a(this.mc, mouseX, mouseY);
         }
     }
 
-    public void drawButton(GuiButton button, Minecraft p_146112_1_, int p_146112_2_, int p_146112_3_) {
+    public void drawButton(GuiButton button, Minecraft mc, int mouseX, int mouseY) {
         if (button.enabled) {
-            FontRenderer fontrenderer = p_146112_1_.fontRenderer;
-            p_146112_1_.getTextureManager().bindTexture(buttonTextures);
+            FontRenderer fontrenderer = mc.fontRenderer;
+            mc.getTextureManager().bindTexture(buttonTextures);
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-            boolean field_146123_n = p_146112_2_ >= button.xPosition
-                    && p_146112_3_ >= button.yPosition
-                    && p_146112_2_ < button.xPosition + button.width
-                    && p_146112_3_ < button.yPosition + button.height;
+            boolean field_146123_n = mouseX >= button.xPosition
+                    && mouseY >= button.yPosition
+                    && mouseX < button.xPosition + button.width
+                    && mouseY < button.yPosition + button.height;
             int k = button.getHoverState(field_146123_n);
             GL11.glEnable(GL11.GL_BLEND);
             OpenGlHelper.glBlendFunc(770, 771, 1, 0);
