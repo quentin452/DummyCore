@@ -1,6 +1,6 @@
 package DummyCore.Client;
 
-import DummyCore.Core.Core;
+import DummyCore.ASM.DCLoadingPlugin;
 import DummyCore.Utils.DummyConfig;
 import DummyCore.Utils.DummyData;
 import DummyCore.Utils.IMainMenu;
@@ -491,7 +491,7 @@ public class MainMenuRegistry {
 
     public static void initMenuConfigs() {
         try {
-            File dir = new File(Core.mcDir, "config");
+            File dir = new File(DCLoadingPlugin.mcDir, "config");
             dir.mkdirs();
             dir = new File(dir, "dcMainMenu");
             if (!dir.exists()) createHelpFile(dir);

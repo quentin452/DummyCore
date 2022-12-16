@@ -1,10 +1,5 @@
 package DummyCore.Core;
 
-import static DummyCore.Core.CoreInitialiser.mcVersion;
-import static DummyCore.Core.CoreInitialiser.modid;
-import static DummyCore.Core.CoreInitialiser.modname;
-import static DummyCore.Core.CoreInitialiser.version;
-
 import DummyCore.Utils.CommandTransfer;
 import DummyCore.Utils.DummyConfig;
 import DummyCore.Utils.DummyDataUtils;
@@ -15,7 +10,6 @@ import DummyCore.Utils.DummyPacketIMSG_Tile;
 import DummyCore.Utils.DummyTilePacketHandler;
 import DummyCore.Utils.LoadingUtils;
 import DummyCore.Utils.MiscUtils;
-import DummyCore.Utils.ModVersionChecker;
 import DummyCore.Utils.NetProxy_Server;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
@@ -39,12 +33,16 @@ import net.minecraftforge.common.MinecraftForge;
  * @author Modbder
  * @version From DummyCore 1.0
  */
-@Mod(modid = modid, name = modname, version = version, useMetadata = false, acceptedMinecraftVersions = mcVersion)
+@Mod(
+        modid = CoreInitialiser.modid,
+        name = CoreInitialiser.modname,
+        version = CoreInitialiser.version,
+        useMetadata = false,
+        acceptedMinecraftVersions = "[1.7.10]")
 public class CoreInitialiser {
 
     public static final String modid = "DummyCore";
     public static final String modname = "DummyCore";
-    public static final String mcVersion = "1.7.10";
     public static final String version = "GRADLETOKEN_VERSION";
 
     public static CoreInitialiser instance;
