@@ -103,7 +103,6 @@ public class CoreInitialiser {
             LoadingUtils.knownBigASMModifiers.add("CodeChickenCore");
 
         FMLCommonHandler.instance().registerCrashCallable(new DCCrashCallable());
-        ModVersionChecker.addRequest(getClass(), "https://www.dropbox.com/s/iwdfv0mc4qns00f/DummyCoreVersion.txt?dl=1");
     }
 
     @EventHandler
