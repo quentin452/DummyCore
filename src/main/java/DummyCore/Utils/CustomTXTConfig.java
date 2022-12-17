@@ -1,7 +1,6 @@
 package DummyCore.Utils;
 
-import DummyCore.Core.Core;
-import cpw.mods.fml.common.FMLCommonHandler;
+import DummyCore.ASM.DCLoadingPlugin;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -15,7 +14,7 @@ public class CustomTXTConfig {
 
     public static void createCFG() {
         try {
-            File cfgDir = new File(Core.mcDir, "config");
+            File cfgDir = new File(DCLoadingPlugin.mcDir, "config");
             if (!cfgDir.exists()) cfgDir.mkdirs();
 
             File actualCfg = new File(cfgDir, "DummyCoreASMSettings.cfg");
@@ -24,9 +23,7 @@ public class CustomTXTConfig {
             readCfg(actualCfg);
             init = true;
         } catch (Exception e) {
-            FMLCommonHandler.instance()
-                    .raiseException(
-                            e, "[DummyCore]Something went wrong while trying to create ASM configuration!", true);
+            throw new RuntimeException("[DummyCore] Something went wrong while trying to create ASM configuration!", e);
         }
     }
 
@@ -45,9 +42,7 @@ public class CustomTXTConfig {
             pw.flush();
             pw.close();
         } catch (Exception e) {
-            FMLCommonHandler.instance()
-                    .raiseException(
-                            e, "[DummyCore]Something went wrong while trying to create ASM configuration!", true);
+            throw new RuntimeException("[DummyCore] Something went wrong while trying to create ASM configuration!", e);
         }
     }
 
@@ -65,7 +60,7 @@ public class CustomTXTConfig {
             br.close();
             fr.close();
         } catch (Exception e) {
-            LoadingUtils.makeACrash("[DummyCore]Failed to read ASM settings!", CustomTXTConfig.class, e, false);
+            LoadingUtils.makeACrash("[DummyCore] Failed to read ASM settings!", CustomTXTConfig.class, e, false);
         }
     }
 }

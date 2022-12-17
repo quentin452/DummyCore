@@ -1,20 +1,16 @@
 package DummyCore.ASM;
 
-import static DummyCore.Core.CoreInitialiser.mcVersion;
-
-import DummyCore.Core.Core;
-import cpw.mods.fml.relauncher.FMLInjectionData;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.MCVersion;
+import cpw.mods.fml.relauncher.IFMLLoadingPlugin.TransformerExclusions;
 import java.io.File;
 import java.util.Map;
 
-@MCVersion(value = mcVersion)
+@MCVersion(value = "1.7.10")
+@TransformerExclusions("DummyCore.ASM.*")
 public class DCLoadingPlugin implements IFMLLoadingPlugin {
 
-    public DCLoadingPlugin() {
-        Core.mcDir = (File) FMLInjectionData.data()[6];
-    }
+    public static File mcDir;
 
     @Override
     public String[] getASMTransformerClass() {
@@ -32,7 +28,9 @@ public class DCLoadingPlugin implements IFMLLoadingPlugin {
     }
 
     @Override
-    public void injectData(Map<String, Object> data) {}
+    public void injectData(Map<String, Object> data) {
+        mcDir = (File) data.get("mcLocation");
+    }
 
     @Override
     public String getAccessTransformerClass() {

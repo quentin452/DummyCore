@@ -15,137 +15,96 @@ public abstract class GuiElement {
 
     public abstract int getY();
 
-    public void drawTexturedModalRect(
-            int p_73729_1_, int p_73729_2_, int p_73729_3_, int p_73729_4_, int p_73729_5_, int p_73729_6_) {
+    public void drawTexturedModalRect(int x, int y, int textureX, int textureY, int width, int height) {
         float f = 0.00390625F;
         float f1 = 0.00390625F;
         Tessellator tessellator = Tessellator.instance;
         tessellator.startDrawingQuads();
         tessellator.addVertexWithUV(
-                (double) (p_73729_1_ + 0),
-                (double) (p_73729_2_ + p_73729_6_),
+                (double) (x + 0),
+                (double) (y + height),
                 (double) this.zLevel,
-                (double) ((float) (p_73729_3_ + 0) * f),
-                (double) ((float) (p_73729_4_ + p_73729_6_) * f1));
+                (double) ((float) (textureX + 0) * f),
+                (double) ((float) (textureY + height) * f1));
         tessellator.addVertexWithUV(
-                (double) (p_73729_1_ + p_73729_5_),
-                (double) (p_73729_2_ + p_73729_6_),
+                (double) (x + width),
+                (double) (y + height),
                 (double) this.zLevel,
-                (double) ((float) (p_73729_3_ + p_73729_5_) * f),
-                (double) ((float) (p_73729_4_ + p_73729_6_) * f1));
+                (double) ((float) (textureX + width) * f),
+                (double) ((float) (textureY + height) * f1));
         tessellator.addVertexWithUV(
-                (double) (p_73729_1_ + p_73729_5_),
-                (double) (p_73729_2_ + 0),
+                (double) (x + width),
+                (double) (y + 0),
                 (double) this.zLevel,
-                (double) ((float) (p_73729_3_ + p_73729_5_) * f),
-                (double) ((float) (p_73729_4_ + 0) * f1));
+                (double) ((float) (textureX + width) * f),
+                (double) ((float) (textureY + 0) * f1));
         tessellator.addVertexWithUV(
-                (double) (p_73729_1_ + 0),
-                (double) (p_73729_2_ + 0),
+                (double) (x + 0),
+                (double) (y + 0),
                 (double) this.zLevel,
-                (double) ((float) (p_73729_3_ + 0) * f),
-                (double) ((float) (p_73729_4_ + 0) * f1));
+                (double) ((float) (textureX + 0) * f),
+                (double) ((float) (textureY + 0) * f1));
         tessellator.draw();
     }
 
-    public void drawTexturedModelRectFromIcon(
-            int p_94065_1_, int p_94065_2_, IIcon p_94065_3_, int p_94065_4_, int p_94065_5_) {
+    public void drawTexturedModelRectFromIcon(int x, int y, IIcon icon, int width, int height) {
         Tessellator tessellator = Tessellator.instance;
         tessellator.startDrawingQuads();
         tessellator.addVertexWithUV(
-                (double) (p_94065_1_ + 0),
-                (double) (p_94065_2_ + p_94065_5_),
-                (double) this.zLevel,
-                (double) p_94065_3_.getMinU(),
-                (double) p_94065_3_.getMaxV());
+                (double) (x + 0), (double) (y + height), (double) this.zLevel, (double) icon.getMinU(), (double)
+                        icon.getMaxV());
         tessellator.addVertexWithUV(
-                (double) (p_94065_1_ + p_94065_4_),
-                (double) (p_94065_2_ + p_94065_5_),
-                (double) this.zLevel,
-                (double) p_94065_3_.getMaxU(),
-                (double) p_94065_3_.getMaxV());
+                (double) (x + width), (double) (y + height), (double) this.zLevel, (double) icon.getMaxU(), (double)
+                        icon.getMaxV());
         tessellator.addVertexWithUV(
-                (double) (p_94065_1_ + p_94065_4_),
-                (double) (p_94065_2_ + 0),
-                (double) this.zLevel,
-                (double) p_94065_3_.getMaxU(),
-                (double) p_94065_3_.getMinV());
+                (double) (x + width), (double) (y + 0), (double) this.zLevel, (double) icon.getMaxU(), (double)
+                        icon.getMinV());
         tessellator.addVertexWithUV(
-                (double) (p_94065_1_ + 0),
-                (double) (p_94065_2_ + 0),
-                (double) this.zLevel,
-                (double) p_94065_3_.getMinU(),
-                (double) p_94065_3_.getMinV());
+                (double) (x + 0), (double) (y + 0), (double) this.zLevel, (double) icon.getMinU(), (double)
+                        icon.getMinV());
         tessellator.draw();
     }
 
     public static void func_146110_a(
-            int p_146110_0_,
-            int p_146110_1_,
-            float p_146110_2_,
-            float p_146110_3_,
-            int p_146110_4_,
-            int p_146110_5_,
-            float p_146110_6_,
-            float p_146110_7_) {
-        float f4 = 1.0F / p_146110_6_;
-        float f5 = 1.0F / p_146110_7_;
+            int x, int y, float u, float v, int width, int height, float textureWidth, float textureHeight) {
+        float f4 = 1.0F / textureWidth;
+        float f5 = 1.0F / textureHeight;
         Tessellator tessellator = Tessellator.instance;
         tessellator.startDrawingQuads();
         tessellator.addVertexWithUV(
-                (double) p_146110_0_, (double) (p_146110_1_ + p_146110_5_), 0.0D, (double) (p_146110_2_ * f4), (double)
-                        ((p_146110_3_ + (float) p_146110_5_) * f5));
+                (double) x, (double) (y + height), 0.0D, (double) (u * f4), (double) ((v + (float) height) * f5));
         tessellator.addVertexWithUV(
-                (double) (p_146110_0_ + p_146110_4_),
-                (double) (p_146110_1_ + p_146110_5_),
-                0.0D,
-                (double) ((p_146110_2_ + (float) p_146110_4_) * f4),
-                (double) ((p_146110_3_ + (float) p_146110_5_) * f5));
+                (double) (x + width), (double) (y + height), 0.0D, (double) ((u + (float) width) * f4), (double)
+                        ((v + (float) height) * f5));
         tessellator.addVertexWithUV(
-                (double) (p_146110_0_ + p_146110_4_),
-                (double) p_146110_1_,
-                0.0D,
-                (double) ((p_146110_2_ + (float) p_146110_4_) * f4),
-                (double) (p_146110_3_ * f5));
-        tessellator.addVertexWithUV(
-                (double) p_146110_0_, (double) p_146110_1_, 0.0D, (double) (p_146110_2_ * f4), (double)
-                        (p_146110_3_ * f5));
+                (double) (x + width), (double) y, 0.0D, (double) ((u + (float) width) * f4), (double) (v * f5));
+        tessellator.addVertexWithUV((double) x, (double) y, 0.0D, (double) (u * f4), (double) (v * f5));
         tessellator.draw();
     }
 
     public static void func_152125_a(
-            int p_152125_0_,
-            int p_152125_1_,
-            float p_152125_2_,
-            float p_152125_3_,
-            int p_152125_4_,
-            int p_152125_5_,
-            int p_152125_6_,
-            int p_152125_7_,
-            float p_152125_8_,
-            float p_152125_9_) {
-        float f4 = 1.0F / p_152125_8_;
-        float f5 = 1.0F / p_152125_9_;
+            int x,
+            int y,
+            float u,
+            float v,
+            int uWidth,
+            int vHeight,
+            int width,
+            int height,
+            float tileWidth,
+            float tileHeight) {
+        float f4 = 1.0F / tileWidth;
+        float f5 = 1.0F / tileHeight;
         Tessellator tessellator = Tessellator.instance;
         tessellator.startDrawingQuads();
         tessellator.addVertexWithUV(
-                (double) p_152125_0_, (double) (p_152125_1_ + p_152125_7_), 0.0D, (double) (p_152125_2_ * f4), (double)
-                        ((p_152125_3_ + (float) p_152125_5_) * f5));
+                (double) x, (double) (y + height), 0.0D, (double) (u * f4), (double) ((v + (float) vHeight) * f5));
         tessellator.addVertexWithUV(
-                (double) (p_152125_0_ + p_152125_6_),
-                (double) (p_152125_1_ + p_152125_7_),
-                0.0D,
-                (double) ((p_152125_2_ + (float) p_152125_4_) * f4),
-                (double) ((p_152125_3_ + (float) p_152125_5_) * f5));
+                (double) (x + width), (double) (y + height), 0.0D, (double) ((u + (float) uWidth) * f4), (double)
+                        ((v + (float) vHeight) * f5));
         tessellator.addVertexWithUV(
-                (double) (p_152125_0_ + p_152125_6_),
-                (double) p_152125_1_,
-                0.0D,
-                (double) ((p_152125_2_ + (float) p_152125_4_) * f4),
-                (double) (p_152125_3_ * f5));
-        tessellator.addVertexWithUV(
-                (double) p_152125_0_, (double) p_152125_1_, 0.0D, (double) (p_152125_2_ * f4), (double)
-                        (p_152125_3_ * f5));
+                (double) (x + width), (double) y, 0.0D, (double) ((u + (float) uWidth) * f4), (double) (v * f5));
+        tessellator.addVertexWithUV((double) x, (double) y, 0.0D, (double) (u * f4), (double) (v * f5));
         tessellator.draw();
     }
 }

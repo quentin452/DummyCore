@@ -14,7 +14,6 @@ import net.minecraftforge.common.config.Configuration;
 public class Core {
 
     public static final ArrayList<DCMod> registeredMods = new ArrayList<DCMod>();
-    public static File mcDir;
 
     public static boolean isModRegistered(Class<?> mod) {
         for (DCMod dcm : registeredMods) if (dcm.modClass.equals(mod)) return true;
