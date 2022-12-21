@@ -3,7 +3,11 @@ package DummyCore.ASM;
 import java.util.Map;
 
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
+import cpw.mods.fml.relauncher.IFMLLoadingPlugin.MCVersion;
+import cpw.mods.fml.relauncher.IFMLLoadingPlugin.TransformerExclusions;
 
+@MCVersion("1.7.10")
+@TransformerExclusions("DummyCore.ASM.*")
 public class DCLoadingPlugin implements IFMLLoadingPlugin{
 
 	@Override
