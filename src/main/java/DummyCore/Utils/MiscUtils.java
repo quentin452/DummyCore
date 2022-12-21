@@ -662,24 +662,24 @@ public class MiscUtils {
 	
 	/**
 	 * Actually draws a textured rectangle
-	 * @param p_73729_1_ - first vertex U
-	 * @param p_73729_2_ - first vertex V
-	 * @param p_73729_3_ - second vertex U
-	 * @param p_73729_4_ - second vertex V
-	 * @param p_73729_5_ - third vertex U
-	 * @param p_73729_6_ - third vertex V
+	 * @param x - first vertex U
+	 * @param y - first vertex V
+	 * @param textureX - second vertex U
+	 * @param textureY - second vertex V
+	 * @param width - third vertex U
+	 * @param height - third vertex V
 	 * @param zLevel - the zlevel on the GUI
 	 */
-    public static void drawTexturedModalRect(int p_73729_1_, int p_73729_2_, int p_73729_3_, int p_73729_4_, int p_73729_5_, int p_73729_6_, int zLevel)
+    public static void drawTexturedModalRect(int x, int y, int textureX, int textureY, int width, int height, int zLevel)
     {
         float f = 0.00390625F;
         float f1 = 0.00390625F;
         Tessellator tessellator = Tessellator.instance;
         tessellator.startDrawingQuads();
-        tessellator.addVertexWithUV((double)(p_73729_1_ + 0), (double)(p_73729_2_ + p_73729_6_), (double)zLevel, (double)((float)(p_73729_3_ + 0) * f), (double)((float)(p_73729_4_ + p_73729_6_) * f1));
-        tessellator.addVertexWithUV((double)(p_73729_1_ + p_73729_5_), (double)(p_73729_2_ + p_73729_6_), (double)zLevel, (double)((float)(p_73729_3_ + p_73729_5_) * f), (double)((float)(p_73729_4_ + p_73729_6_) * f1));
-        tessellator.addVertexWithUV((double)(p_73729_1_ + p_73729_5_), (double)(p_73729_2_ + 0), (double)zLevel, (double)((float)(p_73729_3_ + p_73729_5_) * f), (double)((float)(p_73729_4_ + 0) * f1));
-        tessellator.addVertexWithUV((double)(p_73729_1_ + 0), (double)(p_73729_2_ + 0), (double)zLevel, (double)((float)(p_73729_3_ + 0) * f), (double)((float)(p_73729_4_ + 0) * f1));
+        tessellator.addVertexWithUV((double)(x + 0), (double)(y + height), (double)zLevel, (double)((float)(textureX + 0) * f), (double)((float)(textureY + height) * f1));
+        tessellator.addVertexWithUV((double)(x + width), (double)(y + height), (double)zLevel, (double)((float)(textureX + width) * f), (double)((float)(textureY + height) * f1));
+        tessellator.addVertexWithUV((double)(x + width), (double)(y + 0), (double)zLevel, (double)((float)(textureX + width) * f), (double)((float)(textureY + 0) * f1));
+        tessellator.addVertexWithUV((double)(x + 0), (double)(y + 0), (double)zLevel, (double)((float)(textureX + 0) * f), (double)((float)(textureY + 0) * f1));
         tessellator.draw();
     }
     

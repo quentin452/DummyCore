@@ -76,7 +76,6 @@ public final class CreativePageItems extends CreativeTabs{
 
 	@Override
 	public Item getTabIconItem() {
-		// TODO Auto-generated method stub
 		return (Item) Item.itemRegistry.getObject("minecraft:iron_axe");
 	}
 }
