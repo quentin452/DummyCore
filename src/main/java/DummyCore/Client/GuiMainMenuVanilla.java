@@ -1,8 +1,6 @@
 package DummyCore.Client;
 
-import net.minecraft.client.gui.GuiMainMenu;
 import DummyCore.Utils.IMainMenu;
+import net.minecraft.client.gui.GuiMainMenu;
 
-public class GuiMainMenuVanilla extends GuiMainMenu implements IMainMenu{
-
-}
+public class GuiMainMenuVanilla extends GuiMainMenu implements IMainMenu {}
