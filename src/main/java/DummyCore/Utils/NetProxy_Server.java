@@ -1,9 +1,7 @@
 package DummyCore.Utils;
 
-import DummyCore.CreativeTabs.CreativePageBlocks;
-import DummyCore.CreativeTabs.CreativePageItems;
-import cpw.mods.fml.common.network.IGuiHandler;
 import java.lang.reflect.Constructor;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.network.INetHandler;
@@ -11,6 +9,10 @@ import net.minecraft.network.NetHandlerPlayServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+
+import DummyCore.CreativeTabs.CreativePageBlocks;
+import DummyCore.CreativeTabs.CreativePageItems;
+import cpw.mods.fml.common.network.IGuiHandler;
 
 public class NetProxy_Server implements IGuiHandler {
 

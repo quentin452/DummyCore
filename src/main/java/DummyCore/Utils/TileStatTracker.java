@@ -4,6 +4,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
 public class TileStatTracker {
+
     public TileEntity trackedTile;
     public NBTTagCompound trackedTag;
 

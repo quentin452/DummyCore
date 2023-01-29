@@ -5,6 +5,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
 
 public abstract class GuiElement {
+
     int zLevel = 0;
 
     public abstract ResourceLocation getElementTexture();
@@ -51,59 +52,84 @@ public abstract class GuiElement {
         Tessellator tessellator = Tessellator.instance;
         tessellator.startDrawingQuads();
         tessellator.addVertexWithUV(
-                (double) (x + 0), (double) (y + height), (double) this.zLevel, (double) icon.getMinU(), (double)
-                        icon.getMaxV());
+                (double) (x + 0),
+                (double) (y + height),
+                (double) this.zLevel,
+                (double) icon.getMinU(),
+                (double) icon.getMaxV());
         tessellator.addVertexWithUV(
-                (double) (x + width), (double) (y + height), (double) this.zLevel, (double) icon.getMaxU(), (double)
-                        icon.getMaxV());
+                (double) (x + width),
+                (double) (y + height),
+                (double) this.zLevel,
+                (double) icon.getMaxU(),
+                (double) icon.getMaxV());
         tessellator.addVertexWithUV(
-                (double) (x + width), (double) (y + 0), (double) this.zLevel, (double) icon.getMaxU(), (double)
-                        icon.getMinV());
+                (double) (x + width),
+                (double) (y + 0),
+                (double) this.zLevel,
+                (double) icon.getMaxU(),
+                (double) icon.getMinV());
         tessellator.addVertexWithUV(
-                (double) (x + 0), (double) (y + 0), (double) this.zLevel, (double) icon.getMinU(), (double)
-                        icon.getMinV());
+                (double) (x + 0),
+                (double) (y + 0),
+                (double) this.zLevel,
+                (double) icon.getMinU(),
+                (double) icon.getMinV());
         tessellator.draw();
     }
 
-    public static void func_146110_a(
-            int x, int y, float u, float v, int width, int height, float textureWidth, float textureHeight) {
+    public static void func_146110_a(int x, int y, float u, float v, int width, int height, float textureWidth,
+            float textureHeight) {
         float f4 = 1.0F / textureWidth;
         float f5 = 1.0F / textureHeight;
         Tessellator tessellator = Tessellator.instance;
         tessellator.startDrawingQuads();
         tessellator.addVertexWithUV(
-                (double) x, (double) (y + height), 0.0D, (double) (u * f4), (double) ((v + (float) height) * f5));
+                (double) x,
+                (double) (y + height),
+                0.0D,
+                (double) (u * f4),
+                (double) ((v + (float) height) * f5));
         tessellator.addVertexWithUV(
-                (double) (x + width), (double) (y + height), 0.0D, (double) ((u + (float) width) * f4), (double)
-                        ((v + (float) height) * f5));
+                (double) (x + width),
+                (double) (y + height),
+                0.0D,
+                (double) ((u + (float) width) * f4),
+                (double) ((v + (float) height) * f5));
         tessellator.addVertexWithUV(
-                (double) (x + width), (double) y, 0.0D, (double) ((u + (float) width) * f4), (double) (v * f5));
+                (double) (x + width),
+                (double) y,
+                0.0D,
+                (double) ((u + (float) width) * f4),
+                (double) (v * f5));
         tessellator.addVertexWithUV((double) x, (double) y, 0.0D, (double) (u * f4), (double) (v * f5));
         tessellator.draw();
     }
 
-    public static void func_152125_a(
-            int x,
-            int y,
-            float u,
-            float v,
-            int uWidth,
-            int vHeight,
-            int width,
-            int height,
-            float tileWidth,
-            float tileHeight) {
+    public static void func_152125_a(int x, int y, float u, float v, int uWidth, int vHeight, int width, int height,
+            float tileWidth, float tileHeight) {
         float f4 = 1.0F / tileWidth;
         float f5 = 1.0F / tileHeight;
         Tessellator tessellator = Tessellator.instance;
         tessellator.startDrawingQuads();
         tessellator.addVertexWithUV(
-                (double) x, (double) (y + height), 0.0D, (double) (u * f4), (double) ((v + (float) vHeight) * f5));
+                (double) x,
+                (double) (y + height),
+                0.0D,
+                (double) (u * f4),
+                (double) ((v + (float) vHeight) * f5));
         tessellator.addVertexWithUV(
-                (double) (x + width), (double) (y + height), 0.0D, (double) ((u + (float) uWidth) * f4), (double)
-                        ((v + (float) vHeight) * f5));
+                (double) (x + width),
+                (double) (y + height),
+                0.0D,
+                (double) ((u + (float) uWidth) * f4),
+                (double) ((v + (float) vHeight) * f5));
         tessellator.addVertexWithUV(
-                (double) (x + width), (double) y, 0.0D, (double) ((u + (float) uWidth) * f4), (double) (v * f5));
+                (double) (x + width),
+                (double) y,
+                0.0D,
+                (double) ((u + (float) uWidth) * f4),
+                (double) (v * f5));
         tessellator.addVertexWithUV((double) x, (double) y, 0.0D, (double) (u * f4), (double) (v * f5));
         tessellator.draw();
     }

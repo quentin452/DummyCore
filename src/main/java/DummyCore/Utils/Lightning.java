@@ -1,6 +1,7 @@
 package DummyCore.Utils;
 
 import java.util.Random;
+
 import org.lwjgl.opengl.GL11;
 
 /**
@@ -21,10 +22,15 @@ public class Lightning {
 
     /**
      * Creates a lightning
-     * @param rand - the random on which your lightning will be built upon.
-     * @param begin - the beginning point of the lightning. This NEVER should relate to coordinates in the world! Instead, it can be 0,0,0, if you want the lightning to be created from the bottom corner of a block, for example.
-     * @param stop - the end point of the lightning. This NEVER should relate to coordinates in the world! Instead, it can be 0,10,0, if you want the lightning to go 10 blocks higher.
-     * @param curve - the amount of curving in your lightning. Usually somewhat around 0.3F if you want the lightning to look realistic. If you put 0.0F it will be a straight line, and 1.0F can lead to weird stuff.
+     * 
+     * @param rand  - the random on which your lightning will be built upon.
+     * @param begin - the beginning point of the lightning. This NEVER should relate to coordinates in the world!
+     *              Instead, it can be 0,0,0, if you want the lightning to be created from the bottom corner of a block,
+     *              for example.
+     * @param stop  - the end point of the lightning. This NEVER should relate to coordinates in the world! Instead, it
+     *              can be 0,10,0, if you want the lightning to go 10 blocks higher.
+     * @param curve - the amount of curving in your lightning. Usually somewhat around 0.3F if you want the lightning to
+     *              look realistic. If you put 0.0F it will be a straight line, and 1.0F can lead to weird stuff.
      * @param color - the color array, representing the color of the lightning.
      */
     public Lightning(Random rand, Coord3D begin, Coord3D stop, float curve, float... color) {
@@ -64,16 +70,15 @@ public class Lightning {
                     factor / 2);
         }
         for (int i = 12; i < 12 + genIndex; ++i) {
-            if (lightningVecsStart[i] != null)
-                generateLightningBetween2Points(
-                        lightningVecsStart[i],
-                        new Coord3D(
-                                lightningVecsStart[i].x + MathUtils.randomFloat(rnd) * (genDistance / 8),
-                                lightningVecsStart[i].y + MathUtils.randomFloat(rnd) * (genDistance / 8),
-                                lightningVecsStart[i].z + MathUtils.randomFloat(rnd) * (genDistance / 8)),
-                        12 + genIndex + i,
-                        0,
-                        factor);
+            if (lightningVecsStart[i] != null) generateLightningBetween2Points(
+                    lightningVecsStart[i],
+                    new Coord3D(
+                            lightningVecsStart[i].x + MathUtils.randomFloat(rnd) * (genDistance / 8),
+                            lightningVecsStart[i].y + MathUtils.randomFloat(rnd) * (genDistance / 8),
+                            lightningVecsStart[i].z + MathUtils.randomFloat(rnd) * (genDistance / 8)),
+                    12 + genIndex + i,
+                    0,
+                    factor);
         }
     }
 
@@ -100,6 +105,7 @@ public class Lightning {
 
     /**
      * Use this anywhere in your render code to actually render the lightning.
+     * 
      * @param x
      * @param y
      * @param z

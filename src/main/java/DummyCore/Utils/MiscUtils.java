@@ -1,10 +1,5 @@
 package DummyCore.Utils;
 
-import DummyCore.Core.CoreInitialiser;
-import cpw.mods.fml.common.ObfuscationReflectionHelper;
-import cpw.mods.fml.relauncher.ReflectionHelper;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -14,6 +9,7 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -55,8 +51,15 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.client.ForgeHooksClient;
 import net.minecraftforge.oredict.OreDictionary;
+
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
+
+import DummyCore.Core.CoreInitialiser;
+import cpw.mods.fml.common.ObfuscationReflectionHelper;
+import cpw.mods.fml.relauncher.ReflectionHelper;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  *
@@ -66,12 +69,12 @@ import org.lwjgl.opengl.GL12;
  *
  */
 public class MiscUtils {
+
     public static final String genUUIDString = "CB3F55A9-6DCC-4FF8-AAC7-9B87A33";
     public static Hashtable<String, String> descriptionTable = new Hashtable<String, String>();
     public static Hashtable<String, EnumChatFormatting> descriptionCTable = new Hashtable<String, EnumChatFormatting>();
     public static Hashtable<List<?>, String> descriptionNTable = new Hashtable<List<?>, String>();
-    public static Hashtable<List<?>, EnumChatFormatting> descriptionNCTable =
-            new Hashtable<List<?>, EnumChatFormatting>();
+    public static Hashtable<List<?>, EnumChatFormatting> descriptionNCTable = new Hashtable<List<?>, EnumChatFormatting>();
     public static Hashtable<String, String> registeredClientData = new Hashtable<String, String>();
     public static Hashtable<String, String> registeredClientWorldData = new Hashtable<String, String>();
     public static Hashtable<String, String> registeredServerData = new Hashtable<String, String>();
@@ -80,7 +83,7 @@ public class MiscUtils {
     public static Hashtable<String, ResourceLocation> locTable = new Hashtable<String, ResourceLocation>();
     // ShaderGroups IDs -
     // 0 - Pixelated
-    // 1 -  Smooth
+    // 1 - Smooth
     // 2 - Bright, Highly blured
     // 3 - High contrast, Pixel outline
     // 4 - Bright, Medium blured
@@ -103,33 +106,24 @@ public class MiscUtils {
     // 21 - Small blur
     // 22 - List Index End
     public static final ResourceLocation[] defaultShaders = new ResourceLocation[] {
-        new ResourceLocation("shaders/post/notch.json"),
-        new ResourceLocation("shaders/post/fxaa.json"),
-        new ResourceLocation("shaders/post/art.json"),
-        new ResourceLocation("shaders/post/bumpy.json"),
-        new ResourceLocation("shaders/post/blobs2.json"),
-        new ResourceLocation("shaders/post/pencil.json"),
-        new ResourceLocation("shaders/post/color_convolve.json"),
-        new ResourceLocation("shaders/post/deconverge.json"),
-        new ResourceLocation("shaders/post/flip.json"),
-        new ResourceLocation("shaders/post/invert.json"),
-        new ResourceLocation("shaders/post/ntsc.json"),
-        new ResourceLocation("shaders/post/outline.json"),
-        new ResourceLocation("shaders/post/phosphor.json"),
-        new ResourceLocation("shaders/post/scan_pincushion.json"),
-        new ResourceLocation("shaders/post/sobel.json"),
-        new ResourceLocation("shaders/post/bits.json"),
-        new ResourceLocation("shaders/post/desaturate.json"),
-        new ResourceLocation("shaders/post/green.json"),
-        new ResourceLocation("shaders/post/blur.json"),
-        new ResourceLocation("shaders/post/wobble.json"),
-        new ResourceLocation("shaders/post/blobs.json"),
-        new ResourceLocation("shaders/post/antialias.json")
-    };
+            new ResourceLocation("shaders/post/notch.json"), new ResourceLocation("shaders/post/fxaa.json"),
+            new ResourceLocation("shaders/post/art.json"), new ResourceLocation("shaders/post/bumpy.json"),
+            new ResourceLocation("shaders/post/blobs2.json"), new ResourceLocation("shaders/post/pencil.json"),
+            new ResourceLocation("shaders/post/color_convolve.json"),
+            new ResourceLocation("shaders/post/deconverge.json"), new ResourceLocation("shaders/post/flip.json"),
+            new ResourceLocation("shaders/post/invert.json"), new ResourceLocation("shaders/post/ntsc.json"),
+            new ResourceLocation("shaders/post/outline.json"), new ResourceLocation("shaders/post/phosphor.json"),
+            new ResourceLocation("shaders/post/scan_pincushion.json"), new ResourceLocation("shaders/post/sobel.json"),
+            new ResourceLocation("shaders/post/bits.json"), new ResourceLocation("shaders/post/desaturate.json"),
+            new ResourceLocation("shaders/post/green.json"), new ResourceLocation("shaders/post/blur.json"),
+            new ResourceLocation("shaders/post/wobble.json"), new ResourceLocation("shaders/post/blobs.json"),
+            new ResourceLocation("shaders/post/antialias.json") };
+
     /**
      * Used to bind texture from the mod. First string is the mod id, and the second is the texture path.
+     * 
      * @version From DummyCore 1.0
-     * @param mod - the in-code modname. always use small letters!
+     * @param mod     - the in-code modname. always use small letters!
      * @param texture - path to your thexture.
      */
     @SideOnly(Side.CLIENT)
@@ -145,6 +139,7 @@ public class MiscUtils {
 
     /**
      * Creates a new NBTTagCompound for the given ItemStack
+     * 
      * @version From DummyCore 1.0
      * @param stack - the ItemStack to work with.
      */
@@ -158,6 +153,7 @@ public class MiscUtils {
 
     /**
      * used to get the ItemStack's tag compound.
+     * 
      * @version From DummyCore 1.0
      * @param stack - the ItemStack to work with.
      * @return NBTTagCompound of the ItemStack
@@ -169,11 +165,12 @@ public class MiscUtils {
 
     /**
      * Used to drop items from IInventory when the block is broken.
+     * 
      * @version From DummyCore 1.0
      * @param par1World - the World object
-     * @param par2 - X coordinate of the block
-     * @param par3 - Y coordinate of the block
-     * @param par4 - Z coordinate of the block
+     * @param par2      - X coordinate of the block
+     * @param par3      - Y coordinate of the block
+     * @param par4      - Z coordinate of the block
      */
     public static void dropItemsOnBlockBreak(World par1World, int par2, int par3, int par4, Block par5, int par6) {
         // Was causing too much issues, had to add a try/catch statement...
@@ -205,8 +202,8 @@ public class MiscUtils {
                                     new ItemStack(itemstack.getItem(), k1, itemstack.getItemDamage()));
 
                             if (itemstack.hasTagCompound()) {
-                                entityitem.getEntityItem().setTagCompound((NBTTagCompound)
-                                        itemstack.getTagCompound().copy());
+                                entityitem.getEntityItem()
+                                        .setTagCompound((NBTTagCompound) itemstack.getTagCompound().copy());
                             }
 
                             float f3 = 0.05F;
@@ -220,7 +217,8 @@ public class MiscUtils {
             }
         } catch (Exception ex) {
             Notifier.notifyCustomMod(
-                    "DummyCore", "[ERROR]Trying to drop items upon block breaking, but caught an exception:");
+                    "DummyCore",
+                    "[ERROR]Trying to drop items upon block breaking, but caught an exception:");
             ex.printStackTrace();
             return;
         }
@@ -228,6 +226,7 @@ public class MiscUtils {
 
     /**
      * Used to check, if the Forge Ore Dictionary contains the given name in it.
+     * 
      * @version From DummyCore 1.4
      * @param oreName - the ore name to search
      * @return true if OreDictionary cantains the given ore, false if not.
@@ -238,6 +237,7 @@ public class MiscUtils {
 
     /**
      * Used to sync the given tile entity with the given side using DummyCore packet handler.
+     * 
      * @version From DummyCore 1.4
      * @param t - the tileentity to sync.
      * @param s - the side, that will accept the packet.
@@ -260,67 +260,61 @@ public class MiscUtils {
 
     /**
      * No longer functional. Please, remove the references from your code and use Minecraft's attrubute system instead!
-     * */
+     */
     @Deprecated
     public static void makeItemIgnoreDamage(Item i) {}
 
     /**
      * No longer functional. Please, remove the references from your code and use Minecraft's attrubute system instead!
-     * */
+     */
     @Deprecated
-    public static void registerItemModifier(
-            Item id, int meta, String type, String last5ofUUID, double value, IAttribute attrib, int operation) {}
+    public static void registerItemModifier(Item id, int meta, String type, String last5ofUUID, double value,
+            IAttribute attrib, int operation) {}
 
     /**
      * Used to apply any attribute to the Player.
      *
-     * @param p - The player to apply the attribute at
-     * @param attrib - the attribute to modify
-     * @param uuidLast5Symbols - last 5 symbols of the unique ID of your modifier. Should be unique per item, however not required strictly. The String needs to hold 5 symbols, and allowed symbols are - 0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F
-     * @param modifier - the value, that the attribute will get modified for
-     * @param remove - should actually remove the attribute from the player, and not add it
-     * @param operation - the operation on the attribute(0 is numberical modification(aka currentAttributeValue+yourValue) and 2 is percentage modification(aka currentAttributeValue*yourValue))
-     * @param type - the condition, at which the modifier should be applied. 3 Conditions exist - inventory(the item needs to be in Player's inventory),hold(Player needs to hold the item) and armor(item needs to be in Player's armor slots)
+     * @param p                - The player to apply the attribute at
+     * @param attrib           - the attribute to modify
+     * @param uuidLast5Symbols - last 5 symbols of the unique ID of your modifier. Should be unique per item, however
+     *                         not required strictly. The String needs to hold 5 symbols, and allowed symbols are -
+     *                         0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F
+     * @param modifier         - the value, that the attribute will get modified for
+     * @param remove           - should actually remove the attribute from the player, and not add it
+     * @param operation        - the operation on the attribute(0 is numberical modification(aka
+     *                         currentAttributeValue+yourValue) and 2 is percentage modification(aka
+     *                         currentAttributeValue*yourValue))
+     * @param type             - the condition, at which the modifier should be applied. 3 Conditions exist -
+     *                         inventory(the item needs to be in Player's inventory),hold(Player needs to hold the item)
+     *                         and armor(item needs to be in Player's armor slots)
      */
-    public static void applyPlayerModifier(
-            EntityPlayer p,
-            IAttribute attrib,
-            String uuidLast5Symbols,
-            double modifier,
-            boolean remove,
-            int operation,
-            String type) {
-        if (p.getAttributeMap()
-                        .getAttributeInstance(attrib)
-                        .getModifier(UUID.fromString(genUUIDString + uuidLast5Symbols))
-                == null) {
-            if (!remove)
-                p.getAttributeMap()
-                        .getAttributeInstance(attrib)
-                        .applyModifier(new AttributeModifier(
-                                UUID.fromString(genUUIDString + uuidLast5Symbols),
-                                "dam." + type + "." + attrib.getAttributeUnlocalizedName(),
-                                modifier,
-                                operation));
+    public static void applyPlayerModifier(EntityPlayer p, IAttribute attrib, String uuidLast5Symbols, double modifier,
+            boolean remove, int operation, String type) {
+        if (p.getAttributeMap().getAttributeInstance(attrib)
+                .getModifier(UUID.fromString(genUUIDString + uuidLast5Symbols)) == null) {
+            if (!remove) p.getAttributeMap().getAttributeInstance(attrib).applyModifier(
+                    new AttributeModifier(
+                            UUID.fromString(genUUIDString + uuidLast5Symbols),
+                            "dam." + type + "." + attrib.getAttributeUnlocalizedName(),
+                            modifier,
+                            operation));
         } else if (remove) {
-            if (p.getAttributeMap()
-                            .getAttributeInstance(attrib)
-                            .getModifier(UUID.fromString(genUUIDString + uuidLast5Symbols))
-                    != null)
-                p.getAttributeMap()
-                        .getAttributeInstance(attrib)
-                        .removeModifier(p.getAttributeMap()
-                                .getAttributeInstance(attrib)
+            if (p.getAttributeMap().getAttributeInstance(attrib)
+                    .getModifier(UUID.fromString(genUUIDString + uuidLast5Symbols)) != null)
+                p.getAttributeMap().getAttributeInstance(attrib).removeModifier(
+                        p.getAttributeMap().getAttributeInstance(attrib)
                                 .getModifier(UUID.fromString(genUUIDString + uuidLast5Symbols)));
         }
     }
 
     /**
      * Used to add custom description to any items. Useful if you do not want to create whole bunch of events?
+     * 
      * @version From DummyCore 1.7
-     * @param unlocalisedName - The name of the item(the unlocalized one) to apply the description for. Not sure, why this exist, guess for more convenience?
-     * @param descr - The description to add
-     * @param color - not actually the color itself, but the formatting of the description.
+     * @param unlocalisedName - The name of the item(the unlocalized one) to apply the description for. Not sure, why
+     *                        this exist, guess for more convenience?
+     * @param descr           - The description to add
+     * @param color           - not actually the color itself, but the formatting of the description.
      */
     public static void registerDescriptionFor(String unlocalisedName, String descr, EnumChatFormatting color) {
         descriptionTable.put(unlocalisedName, descr);
@@ -329,9 +323,10 @@ public class MiscUtils {
 
     /**
      * Used to add custom description to any items. Useful if you do not want to create whole bunch of events?
+     * 
      * @version From DummyCore 1.7
-     * @param id - The id of the item to apply the description for.
-     * @param meta - The metadate of the item to apply the description for.
+     * @param id    - The id of the item to apply the description for.
+     * @param meta  - The metadate of the item to apply the description for.
      * @param descr - The description to add
      * @param color - not actually the color itself, but the formatting of the description.
      */
@@ -342,13 +337,14 @@ public class MiscUtils {
 
     /**
      * Used to send packets from SERVER to CLIENT.
+     * 
      * @version From DummyCore 1.7
-     * @param w - the worldObj that we are operating in
-     * @param pkt - the packet to send
-     * @param x - the X coordinate
-     * @param y - the Y coordinate
-     * @param z - the Z coordinate
-     * @param dimId - the ID of the dimension to look the players.
+     * @param w        - the worldObj that we are operating in
+     * @param pkt      - the packet to send
+     * @param x        - the X coordinate
+     * @param y        - the Y coordinate
+     * @param z        - the Z coordinate
+     * @param dimId    - the ID of the dimension to look the players.
      * @param distance - the distance at which the players will get found.
      */
     @SuppressWarnings("unchecked")
@@ -366,16 +362,13 @@ public class MiscUtils {
                         w.getTileEntity(x, y, z).writeToNBT(tileTag);
                         CoreInitialiser.network.sendTo(new DummyPacketIMSG_Tile(tileTag, -10), (EntityPlayerMP) player);
                     } else {
-                        if (player.dimension == dimId)
-                            ((EntityPlayerMP) player)
-                                    .getServerForPlayer()
-                                    .func_73046_m()
-                                    .getConfigurationManager()
-                                    .sendPacketToAllPlayers(pkt);
+                        if (player.dimension == dimId) ((EntityPlayerMP) player).getServerForPlayer().func_73046_m()
+                                .getConfigurationManager().sendPacketToAllPlayers(pkt);
                     }
                 } else {
-                    Notifier.notifyDebug("Trying to send packet " + pkt
-                            + " to all around on Client side, probably a bug, ending the packet send try");
+                    Notifier.notifyDebug(
+                            "Trying to send packet " + pkt
+                                    + " to all around on Client side, probably a bug, ending the packet send try");
                 }
             }
         }
@@ -383,8 +376,9 @@ public class MiscUtils {
 
     /**
      * Used to send packets from SERVER to CLIENT.
+     * 
      * @version From DummyCore 1.7
-     * @param w - the worldObj that we are operating in
+     * @param w        - the worldObj that we are operating in
      * @param distance - the distance at which the players will get found.
      */
     @SuppressWarnings("unchecked")
@@ -396,8 +390,9 @@ public class MiscUtils {
                 if (player instanceof EntityPlayerMP) {
                     ((EntityPlayerMP) player).playerNetServerHandler.sendPacket(pkt);
                 } else {
-                    Notifier.notifyDebug("Trying to send packet " + pkt
-                            + " to all on Client side, probably a bug, ending the packet send try");
+                    Notifier.notifyDebug(
+                            "Trying to send packet " + pkt
+                                    + " to all on Client side, probably a bug, ending the packet send try");
                 }
             }
         }
@@ -405,9 +400,10 @@ public class MiscUtils {
 
     /**
      * Used to send packets from SERVER to CLIENT.
+     * 
      * @version From DummyCore 1.7
-     * @param w - the worldObj that we are operating in
-     * @param pkt - the packet to send
+     * @param w     - the worldObj that we are operating in
+     * @param pkt   - the packet to send
      * @param dimId - the ID of the dimension to look the players.
      */
     @SuppressWarnings("unchecked")
@@ -419,8 +415,11 @@ public class MiscUtils {
                 if (player instanceof EntityPlayerMP) {
                     if (player.dimension == dimId) ((EntityPlayerMP) player).playerNetServerHandler.sendPacket(pkt);
                 } else {
-                    Notifier.notifyDebug("Trying to send packet " + pkt + " to all in dimension " + dimId
-                            + " on Client side, probably a bug, ending the packet send try");
+                    Notifier.notifyDebug(
+                            "Trying to send packet " + pkt
+                                    + " to all in dimension "
+                                    + dimId
+                                    + " on Client side, probably a bug, ending the packet send try");
                 }
             }
         }
@@ -428,26 +427,33 @@ public class MiscUtils {
 
     /**
      * Used to send packets from SERVER to CLIENT.
+     * 
      * @version From DummyCore 1.7
-     * @param w - the worldObj that we are operating in
-     * @param pkt - the packet to send
+     * @param w      - the worldObj that we are operating in
+     * @param pkt    - the packet to send
      * @param player - the player to whom we are sending the packet.
      */
     public static void sendPacketToPlayer(World w, Packet pkt, EntityPlayer player) {
         if (player instanceof EntityPlayerMP) {
             ((EntityPlayerMP) player).playerNetServerHandler.sendPacket(pkt);
         } else {
-            Notifier.notifyDebug("Trying to send packet " + pkt + " to player " + player + "||"
-                    + player.getDisplayName() + " on Client side, probably a bug, ending the packet send try");
+            Notifier.notifyDebug(
+                    "Trying to send packet " + pkt
+                            + " to player "
+                            + player
+                            + "||"
+                            + player.getDisplayName()
+                            + " on Client side, probably a bug, ending the packet send try");
         }
     }
 
     /**
      * Used to draw a textured rectangle using the given IIcon
-     * @param x - the X coordinate on the screen. Should be bound to the ScaledResolution
-     * @param y - the Y coordinate on the screen. Should be bound to the ScaledResolution
-     * @param icon - the icon itself
-     * @param width - the width of your Icon
+     * 
+     * @param x      - the X coordinate on the screen. Should be bound to the ScaledResolution
+     * @param y      - the Y coordinate on the screen. Should be bound to the ScaledResolution
+     * @param icon   - the icon itself
+     * @param width  - the width of your Icon
      * @param height - the height of your Icon
      * @param zLevel - the z rendering level on the GUI(depth)
      * @return
@@ -464,8 +470,8 @@ public class MiscUtils {
             double maxV = icon.getMaxV();
             Tessellator tessellator = Tessellator.instance;
             tessellator.startDrawingQuads();
-            tessellator.addVertexWithUV(
-                    x + 0, y + height, zLevel, minU, minV + ((maxV - minV) * (double) height) / 16D);
+            tessellator
+                    .addVertexWithUV(x + 0, y + height, zLevel, minU, minV + ((maxV - minV) * (double) height) / 16D);
             tessellator.addVertexWithUV(
                     x + width,
                     y + height,
@@ -481,10 +487,11 @@ public class MiscUtils {
 
     /**
      * Used to draw a textured rectangle using the given IIcon
-     * @param x - the X coordinate on the screen. Should be bound to the ScaledResolution
-     * @param y - the Y coordinate on the screen. Should be bound to the ScaledResolution
-     * @param icon - the icon itself
-     * @param width - the width of your Icon
+     * 
+     * @param x      - the X coordinate on the screen. Should be bound to the ScaledResolution
+     * @param y      - the Y coordinate on the screen. Should be bound to the ScaledResolution
+     * @param icon   - the icon itself
+     * @param width  - the width of your Icon
      * @param height - the height of your Icon
      * @param zLevel - the z rendering level on the GUI(depth)
      * @return
@@ -501,8 +508,8 @@ public class MiscUtils {
             double maxV = icon.getMaxV();
             Tessellator tessellator = Tessellator.instance;
             tessellator.startDrawingQuads();
-            tessellator.addVertexWithUV(
-                    x + 0, y + height, zLevel, minU, minV + ((maxV - minV) * (double) height) / 16D);
+            tessellator
+                    .addVertexWithUV(x + 0, y + height, zLevel, minU, minV + ((maxV - minV) * (double) height) / 16D);
             tessellator.addVertexWithUV(
                     x + width,
                     y + height,
@@ -518,10 +525,11 @@ public class MiscUtils {
 
     /**
      * Used to draw a textured rectangle using the given IIcon
-     * @param x - the X coordinate on the screen. Should be bound to the ScaledResolution
-     * @param y - the Y coordinate on the screen. Should be bound to the ScaledResolution
-     * @param icon - the icon itself
-     * @param width - the width of your rectangle
+     * 
+     * @param x      - the X coordinate on the screen. Should be bound to the ScaledResolution
+     * @param y      - the Y coordinate on the screen. Should be bound to the ScaledResolution
+     * @param icon   - the icon itself
+     * @param width  - the width of your rectangle
      * @param height - the height of your rectangle
      * @param zLevel - the z rendering level on the GUI(depth)
      * @return
@@ -538,10 +546,11 @@ public class MiscUtils {
 
     /**
      * Used to draw a textured rectangle using the given IIcon
-     * @param x - the X coordinate on the screen. Should be bound to the ScaledResolution
-     * @param y - the Y coordinate on the screen. Should be bound to the ScaledResolution
-     * @param icon - the icon itself
-     * @param width - the width of your rectangle
+     * 
+     * @param x      - the X coordinate on the screen. Should be bound to the ScaledResolution
+     * @param y      - the Y coordinate on the screen. Should be bound to the ScaledResolution
+     * @param icon   - the icon itself
+     * @param width  - the width of your rectangle
      * @param height - the height of your rectangle
      * @param zLevel - the z rendering level on the GUI(depth)
      * @return
@@ -551,16 +560,23 @@ public class MiscUtils {
         for (int i = 0; i < width; i += 16) {
             for (int j = 0; j < height; j += 16) {
                 drawScaledTexturedRect_Items(
-                        x + i, y + j, icon, Math.min(width - i, 16), Math.min(height - j, 16), zLevel);
+                        x + i,
+                        y + j,
+                        icon,
+                        Math.min(width - i, 16),
+                        Math.min(height - j, 16),
+                        zLevel);
             }
         }
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
     }
 
     /**
-     * Used to check if the given class actually has the named method. Used when working with APIs of different mods(actually not)
-     * @param c - the class
-     * @param mName - the name of the method
+     * Used to check if the given class actually has the named method. Used when working with APIs of different
+     * mods(actually not)
+     * 
+     * @param c       - the class
+     * @param mName   - the name of the method
      * @param classes - actual parameters of the method
      * @return true if the given method exist, false if not
      */
@@ -575,7 +591,8 @@ public class MiscUtils {
 
     /**
      * Have you ever thought that saving inventories to NBTTag takes too much code? Here is a nifty solution to do so!
-     * @param t - the TileEntity
+     * 
+     * @param t       - the TileEntity
      * @param saveTag - the tag
      */
     public static void saveInventory(TileEntity t, NBTTagCompound saveTag) {
@@ -595,8 +612,10 @@ public class MiscUtils {
     }
 
     /**
-     * Have you ever thought that loading inventories from NBTTag takes too much code? Here is a nifty solution to do so!
-     * @param t - the TileEntity
+     * Have you ever thought that loading inventories from NBTTag takes too much code? Here is a nifty solution to do
+     * so!
+     * 
+     * @param t       - the TileEntity
      * @param loadTag - the tag
      */
     public static void loadInventory(TileEntity t, NBTTagCompound loadTag) {
@@ -618,17 +637,19 @@ public class MiscUtils {
     }
 
     /**
-     * Actually changes the BiomeGenBase at the given coordinates. It still requires Client to update the BlockRenderer at the position!
-     * @param w - World
+     * Actually changes the BiomeGenBase at the given coordinates. It still requires Client to update the BlockRenderer
+     * at the position!
+     * 
+     * @param w     - World
      * @param biome - the biome you are changing to
-     * @param x - xCoordinate of the BLOCK
-     * @param z - zCoordinate of the BLOCK
+     * @param x     - xCoordinate of the BLOCK
+     * @param z     - zCoordinate of the BLOCK
      */
     public static void changeBiome(World w, BiomeGenBase biome, int x, int z) {
         Chunk chunk = w.getChunkFromBlockCoords(x, z);
         byte[] b = chunk.getBiomeArray();
-        byte cbiome =
-                b[(z & 0xf) << 4 | x & 0xf]; // What is even going on here? Can this code be a little bit more readable?
+        byte cbiome = b[(z & 0xf) << 4 | x & 0xf]; // What is even going on here? Can this code be a little bit more
+                                                   // readable?
         cbiome = (byte) (biome.biomeID & 0xff);
         b[(z & 0xf) << 4 | x & 0xf] = cbiome; // Looks like not.
         chunk.setBiomeArray(b);
@@ -637,16 +658,17 @@ public class MiscUtils {
 
     /**
      * Actually creates the given particles for ALL players
+     * 
      * @param particleName - the name of the particle
-     * @param posX - xCoord of the particle
-     * @param posY - yCoord of the particle
-     * @param posZ - zCoord of the particle
-     * @param par5 - particle 1 gen int. Can be motion or color(depends on the particle).
-     * @param par6 - particle 1 gen int. Can be motion or color(depends on the particle).
-     * @param par7 - particle 1 gen int. Can be motion or color(depends on the particle).
+     * @param posX         - xCoord of the particle
+     * @param posY         - yCoord of the particle
+     * @param posZ         - zCoord of the particle
+     * @param par5         - particle 1 gen int. Can be motion or color(depends on the particle).
+     * @param par6         - particle 1 gen int. Can be motion or color(depends on the particle).
+     * @param par7         - particle 1 gen int. Can be motion or color(depends on the particle).
      */
-    public static void spawnParticlesOnServer(
-            String particleName, float posX, float posY, float posZ, double par5, double par6, double par7) {
+    public static void spawnParticlesOnServer(String particleName, float posX, float posY, float posZ, double par5,
+            double par6, double par7) {
         String dataString = "||mod:DummyCore.Particle";
         DummyData name = new DummyData("particleName", particleName);
         DummyData xpos = new DummyData("positionX", posX);
@@ -670,16 +692,17 @@ public class MiscUtils {
 
     /**
      * Actually draws a textured rectangle
-     * @param x - first vertex U
-     * @param y - first vertex V
+     * 
+     * @param x        - first vertex U
+     * @param y        - first vertex V
      * @param textureX - second vertex U
      * @param textureY - second vertex V
-     * @param width - third vertex U
-     * @param height - third vertex V
-     * @param zLevel - the zlevel on the GUI
+     * @param width    - third vertex U
+     * @param height   - third vertex V
+     * @param zLevel   - the zlevel on the GUI
      */
-    public static void drawTexturedModalRect(
-            int x, int y, int textureX, int textureY, int width, int height, int zLevel) {
+    public static void drawTexturedModalRect(int x, int y, int textureX, int textureY, int width, int height,
+            int zLevel) {
         float f = 0.00390625F;
         float f1 = 0.00390625F;
         Tessellator tessellator = Tessellator.instance;
@@ -703,46 +726,37 @@ public class MiscUtils {
                 (double) ((float) (textureX + width) * f),
                 (double) ((float) (textureY + 0) * f1));
         tessellator.addVertexWithUV(
-                (double) (x + 0), (double) (y + 0), (double) zLevel, (double) ((float) (textureX + 0) * f), (double)
-                        ((float) (textureY + 0) * f1));
+                (double) (x + 0),
+                (double) (y + 0),
+                (double) zLevel,
+                (double) ((float) (textureX + 0) * f),
+                (double) ((float) (textureY + 0) * f1));
         tessellator.draw();
     }
 
     /**
      * Renders the given ItemStack in the world. Call ONLY from render methods!
-     * @param stk - ItemStack you wish to render
-     * @param posX - xCoord in the world
-     * @param posY - yCoord in the world
-     * @param posZ - zCoord in the world
+     * 
+     * @param stk        - ItemStack you wish to render
+     * @param posX       - xCoord in the world
+     * @param posY       - yCoord in the world
+     * @param posZ       - zCoord in the world
      * @param screenPosX - x position on the screen(given by render)
      * @param screenPosY - y position on the screen(given by render)
      * @param screenPosZ - z position on the screen(given by render)
-     * @param rotation - the X axis rotation
-     * @param rotationZ - the Z axis rotation
-     * @param colorRed - red color index(0.0F is 0% and 1.0F is 100%)
+     * @param rotation   - the X axis rotation
+     * @param rotationZ  - the Z axis rotation
+     * @param colorRed   - red color index(0.0F is 0% and 1.0F is 100%)
      * @param colorGreen - green color index(0.0F is 0% and 1.0F is 100%)
-     * @param colorBlue - blue color index(0.0F is 0% and 1.0F is 100%)
-     * @param offsetX - offset by X
-     * @param offsetY - offset by Y
-     * @param offsetZ - offset by Z
+     * @param colorBlue  - blue color index(0.0F is 0% and 1.0F is 100%)
+     * @param offsetX    - offset by X
+     * @param offsetY    - offset by Y
+     * @param offsetZ    - offset by Z
      */
     @SideOnly(Side.CLIENT)
-    public static void renderItemStack_Full(
-            ItemStack stk,
-            double posX,
-            double posY,
-            double posZ,
-            double screenPosX,
-            double screenPosY,
-            double screenPosZ,
-            float rotation,
-            float rotationZ,
-            float colorRed,
-            float colorGreen,
-            float colorBlue,
-            float offsetX,
-            float offsetY,
-            float offsetZ) {
+    public static void renderItemStack_Full(ItemStack stk, double posX, double posY, double posZ, double screenPosX,
+            double screenPosY, double screenPosZ, float rotation, float rotationZ, float colorRed, float colorGreen,
+            float colorBlue, float offsetX, float offsetY, float offsetZ) {
         if (stk != null) {
             ItemStack itemstack = stk.copy();
             itemstack.stackSize = 1; // Doing this so no weird glitches occur.
@@ -751,10 +765,8 @@ public class MiscUtils {
             Random random = new Random();
             boolean renderWithColor = true;
             if (itemstack != null && itemstack.getItem() != null) {
-                Minecraft.getMinecraft()
-                        .renderEngine
-                        .bindTexture(
-                                Minecraft.getMinecraft().renderEngine.getResourceLocation(stk.getItemSpriteNumber()));
+                Minecraft.getMinecraft().renderEngine.bindTexture(
+                        Minecraft.getMinecraft().renderEngine.getResourceLocation(stk.getItemSpriteNumber()));
                 TextureUtil.func_152777_a(false, false, 1.0F);
                 random.setSeed(187L);
                 GL11.glPushMatrix();
@@ -779,7 +791,9 @@ public class MiscUtils {
                 }
 
                 GL11.glTranslated(
-                        (float) screenPosX + offsetX, (float) screenPosY + offsetY, (float) screenPosZ + offsetZ);
+                        (float) screenPosX + offsetX,
+                        (float) screenPosY + offsetY,
+                        (float) screenPosZ + offsetZ);
                 GL11.glEnable(GL12.GL_RESCALE_NORMAL);
                 float f6;
                 float f7;
@@ -796,140 +810,127 @@ public class MiscUtils {
                         renderBlocksRi,
                         b0)) {
                     ;
-                } else if (itemstack.getItemSpriteNumber() == 0
-                        && itemstack.getItem() instanceof ItemBlock
-                        && RenderBlocks.renderItemIn3d(
-                                Block.getBlockFromItem(itemstack.getItem()).getRenderType())) {
-                    Block block = Block.getBlockFromItem(itemstack.getItem());
-                    GL11.glRotatef(f3, 0.0F, 1.0F, 0.0F);
-                    float f9 = 0.25F;
-                    k = block.getRenderType();
+                } else if (itemstack.getItemSpriteNumber() == 0 && itemstack.getItem() instanceof ItemBlock
+                        && RenderBlocks.renderItemIn3d(Block.getBlockFromItem(itemstack.getItem()).getRenderType())) {
+                            Block block = Block.getBlockFromItem(itemstack.getItem());
+                            GL11.glRotatef(f3, 0.0F, 1.0F, 0.0F);
+                            float f9 = 0.25F;
+                            k = block.getRenderType();
 
-                    if (k == 1 || k == 19 || k == 12 || k == 2) {
-                        f9 = 0.5F;
-                    }
+                            if (k == 1 || k == 19 || k == 12 || k == 2) {
+                                f9 = 0.5F;
+                            }
 
-                    if (block.getRenderBlockPass() > 0) {
-                        GL11.glAlphaFunc(GL11.GL_GREATER, 0.1F);
-                        GL11.glEnable(GL11.GL_BLEND);
-                        OpenGlHelper.glBlendFunc(770, 771, 1, 0);
-                    }
+                            if (block.getRenderBlockPass() > 0) {
+                                GL11.glAlphaFunc(GL11.GL_GREATER, 0.1F);
+                                GL11.glEnable(GL11.GL_BLEND);
+                                OpenGlHelper.glBlendFunc(770, 771, 1, 0);
+                            }
 
-                    GL11.glScalef(f9, f9, f9);
+                            GL11.glScalef(f9, f9, f9);
 
-                    for (int l = 0; l < b0; ++l) {
-                        GL11.glPushMatrix();
+                            for (int l = 0; l < b0; ++l) {
+                                GL11.glPushMatrix();
 
-                        if (l > 0) {
-                            f6 = (random.nextFloat() * 2.0F - 1.0F) * 0.2F / f9;
-                            f7 = (random.nextFloat() * 2.0F - 1.0F) * 0.2F / f9;
-                            float f8 = (random.nextFloat() * 2.0F - 1.0F) * 0.2F / f9;
-                            GL11.glTranslatef(f6, f7, f8);
+                                if (l > 0) {
+                                    f6 = (random.nextFloat() * 2.0F - 1.0F) * 0.2F / f9;
+                                    f7 = (random.nextFloat() * 2.0F - 1.0F) * 0.2F / f9;
+                                    float f8 = (random.nextFloat() * 2.0F - 1.0F) * 0.2F / f9;
+                                    GL11.glTranslatef(f6, f7, f8);
+                                }
+
+                                renderBlocksRi.renderBlockAsItem(block, itemstack.getItemDamage(), 1.0F);
+                                GL11.glPopMatrix();
+                            }
+
+                            if (block.getRenderBlockPass() > 0) {
+                                GL11.glDisable(GL11.GL_BLEND);
+                            }
+                        } else {
+                            if (itemstack.getItem().requiresMultipleRenderPasses()) {
+                                GL11.glScalef(0.5F, 0.5F, 0.5F);
+                                for (int j = 0; j
+                                        < itemstack.getItem().getRenderPasses(itemstack.getItemDamage()); ++j) {
+                                    random.setSeed(187L);
+                                    itemstack.getItem().getIcon(itemstack, j);
+                                    renderItemStack(
+                                            stk,
+                                            posX,
+                                            posY,
+                                            posZ,
+                                            screenPosX,
+                                            screenPosY,
+                                            screenPosZ,
+                                            rotation,
+                                            colorRed,
+                                            colorGreen,
+                                            colorBlue,
+                                            j,
+                                            stk.stackSize);
+                                }
+                            } else {
+                                if (itemstack != null && itemstack.getItem() instanceof ItemCloth) {
+                                    GL11.glAlphaFunc(GL11.GL_GREATER, 0.1F);
+                                    GL11.glEnable(GL11.GL_BLEND);
+                                    OpenGlHelper.glBlendFunc(770, 771, 1, 0);
+                                }
+                                GL11.glScalef(0.5F, 0.5F, 0.5F);
+                                itemstack.getIconIndex();
+
+                                if (renderWithColor) {
+                                    renderItemStack(
+                                            stk,
+                                            posX,
+                                            posY,
+                                            posZ,
+                                            screenPosX,
+                                            screenPosY,
+                                            screenPosZ,
+                                            rotation,
+                                            colorRed,
+                                            colorGreen,
+                                            colorBlue,
+                                            0,
+                                            stk.stackSize);
+                                }
+                                if (itemstack != null && itemstack.getItem() instanceof ItemCloth) {
+                                    GL11.glDisable(GL11.GL_BLEND);
+                                }
+                            }
                         }
-
-                        renderBlocksRi.renderBlockAsItem(block, itemstack.getItemDamage(), 1.0F);
-                        GL11.glPopMatrix();
-                    }
-
-                    if (block.getRenderBlockPass() > 0) {
-                        GL11.glDisable(GL11.GL_BLEND);
-                    }
-                } else {
-                    if (itemstack.getItem().requiresMultipleRenderPasses()) {
-                        GL11.glScalef(0.5F, 0.5F, 0.5F);
-                        for (int j = 0; j < itemstack.getItem().getRenderPasses(itemstack.getItemDamage()); ++j) {
-                            random.setSeed(187L);
-                            itemstack.getItem().getIcon(itemstack, j);
-                            renderItemStack(
-                                    stk,
-                                    posX,
-                                    posY,
-                                    posZ,
-                                    screenPosX,
-                                    screenPosY,
-                                    screenPosZ,
-                                    rotation,
-                                    colorRed,
-                                    colorGreen,
-                                    colorBlue,
-                                    j,
-                                    stk.stackSize);
-                        }
-                    } else {
-                        if (itemstack != null && itemstack.getItem() instanceof ItemCloth) {
-                            GL11.glAlphaFunc(GL11.GL_GREATER, 0.1F);
-                            GL11.glEnable(GL11.GL_BLEND);
-                            OpenGlHelper.glBlendFunc(770, 771, 1, 0);
-                        }
-                        GL11.glScalef(0.5F, 0.5F, 0.5F);
-                        itemstack.getIconIndex();
-
-                        if (renderWithColor) {
-                            renderItemStack(
-                                    stk,
-                                    posX,
-                                    posY,
-                                    posZ,
-                                    screenPosX,
-                                    screenPosY,
-                                    screenPosZ,
-                                    rotation,
-                                    colorRed,
-                                    colorGreen,
-                                    colorBlue,
-                                    0,
-                                    stk.stackSize);
-                        }
-                        if (itemstack != null && itemstack.getItem() instanceof ItemCloth) {
-                            GL11.glDisable(GL11.GL_BLEND);
-                        }
-                    }
-                }
                 fakeItem = null;
                 GL11.glDisable(GL12.GL_RESCALE_NORMAL);
                 GL11.glPopMatrix();
-                Minecraft.getMinecraft()
-                        .renderEngine
-                        .bindTexture(
-                                Minecraft.getMinecraft().renderEngine.getResourceLocation(stk.getItemSpriteNumber()));
+                Minecraft.getMinecraft().renderEngine.bindTexture(
+                        Minecraft.getMinecraft().renderEngine.getResourceLocation(stk.getItemSpriteNumber()));
                 TextureUtil.func_147945_b();
             }
-            itemstack =
-                    null; // Again, there is a gc for that, but removing possible leaks is never a bad thing to do...
+            itemstack = null; // Again, there is a gc for that, but removing possible leaks is never a bad thing to
+                              // do...
         }
     }
 
     /**
      * Sub-function to the first one. You shouldn't use this, however it is also possible.
-     * @param stk - ItemStack you wish to render
-     * @param posX - xCoord in the world
-     * @param posY - yCoord in the world
-     * @param posZ - zCoord in the world
-     * @param screenPosX - x position on the screen(given by render)
-     * @param screenPosY - y position on the screen(given by render)
-     * @param screenPosZ - z position on the screen(given by render)
-     * @param rotation - the X axis rotation
-     * @param colorRed - red color index(0.0F is 0% and 1.0F is 100%)
-     * @param colorGreen - green color index(0.0F is 0% and 1.0F is 100%)
-     * @param colorBlue - blue color index(0.0F is 0% and 1.0F is 100%)
-     * @param renderPass - the render pass of the ItemStack(is 0 for most of them, however may depend)
+     * 
+     * @param stk         - ItemStack you wish to render
+     * @param posX        - xCoord in the world
+     * @param posY        - yCoord in the world
+     * @param posZ        - zCoord in the world
+     * @param screenPosX  - x position on the screen(given by render)
+     * @param screenPosY  - y position on the screen(given by render)
+     * @param screenPosZ  - z position on the screen(given by render)
+     * @param rotation    - the X axis rotation
+     * @param colorRed    - red color index(0.0F is 0% and 1.0F is 100%)
+     * @param colorGreen  - green color index(0.0F is 0% and 1.0F is 100%)
+     * @param colorBlue   - blue color index(0.0F is 0% and 1.0F is 100%)
+     * @param renderPass  - the render pass of the ItemStack(is 0 for most of them, however may depend)
      * @param itemsAmount - the amount of items in the ItemStack(or actually ItemStack.stackSize)
      */
     @SideOnly(Side.CLIENT)
-    public static void renderItemStack(
-            ItemStack stk,
-            double posX,
-            double posY,
-            double posZ,
-            double screenPosX,
-            double screenPosY,
-            double screenPosZ,
-            float rotation,
-            float colorRed,
-            float colorGreen,
-            float colorBlue,
-            int renderPass,
-            int itemsAmount) {
+    public static void renderItemStack(ItemStack stk, double posX, double posY, double posZ, double screenPosX,
+            double screenPosY, double screenPosZ, float rotation, float colorRed, float colorGreen, float colorBlue,
+            int renderPass, int itemsAmount) {
         final ResourceLocation RES_ITEM_GLINT = new ResourceLocation("textures/misc/enchanted_item_glint.png");
         new RenderBlocks();
         Random random = new Random();
@@ -939,8 +940,7 @@ public class MiscUtils {
 
         if (p_77020_2_ == null) {
             TextureManager texturemanager = Minecraft.getMinecraft().getTextureManager();
-            ResourceLocation resourcelocation =
-                    texturemanager.getResourceLocation(stk.getItem().getSpriteNumber());
+            ResourceLocation resourcelocation = texturemanager.getResourceLocation(stk.getItem().getSpriteNumber());
             p_77020_2_ = ((TextureMap) texturemanager.getTexture(resourcelocation)).getAtlasSprite("missingno");
         }
 
@@ -1046,12 +1046,12 @@ public class MiscUtils {
                 GL11.glColor4f(colorRed, colorGreen, colorBlue, 1.0F);
                 tessellator.startDrawingQuads();
                 tessellator.setNormal(0.0F, 1.0F, 0.0F);
-                tessellator.addVertexWithUV(
-                        (double) (0.0F - f7), (double) (0.0F - f8), 0.0D, (double) f14, (double) f5);
+                tessellator
+                        .addVertexWithUV((double) (0.0F - f7), (double) (0.0F - f8), 0.0D, (double) f14, (double) f5);
                 tessellator.addVertexWithUV((double) (f6 - f7), (double) (0.0F - f8), 0.0D, (double) f15, (double) f5);
                 tessellator.addVertexWithUV((double) (f6 - f7), (double) (1.0F - f8), 0.0D, (double) f15, (double) f4);
-                tessellator.addVertexWithUV(
-                        (double) (0.0F - f7), (double) (1.0F - f8), 0.0D, (double) f14, (double) f4);
+                tessellator
+                        .addVertexWithUV((double) (0.0F - f7), (double) (1.0F - f8), 0.0D, (double) f14, (double) f4);
                 tessellator.draw();
                 GL11.glPopMatrix();
             }
@@ -1060,6 +1060,7 @@ public class MiscUtils {
 
     /**
      * Clones the given Entity, including it's full NBTTag
+     * 
      * @param e - the entity to clone
      * @return The cloned entity
      */
@@ -1075,9 +1076,11 @@ public class MiscUtils {
     }
 
     /**
-     * Changes biome at the given coordinates. Unlike the previous function this one takes the biomeID, not the biome itself and isn't world dependant
-     * @param x - x position of the block
-     * @param z - z position of the block
+     * Changes biome at the given coordinates. Unlike the previous function this one takes the biomeID, not the biome
+     * itself and isn't world dependant
+     * 
+     * @param x       - x position of the block
+     * @param z       - z position of the block
      * @param biomeID - the new BiomeID
      */
     public static void notifyBiomeChange(int x, int z, int biomeID) {
@@ -1095,9 +1098,11 @@ public class MiscUtils {
     }
 
     /**
-     * Imitates the armor absorbption for the given damage. Can be used, if you damage your target inderectly, but still want the damage to get reduced by armor
-     * @param base - The damaged Entity
-     * @param dam - the damage source
+     * Imitates the armor absorbption for the given damage. Can be used, if you damage your target inderectly, but still
+     * want the damage to get reduced by armor
+     * 
+     * @param base   - The damaged Entity
+     * @param dam    - the damage source
      * @param amount - the amount of the damage
      * @return New amount of damage(the old one reduced by armor)
      */
@@ -1112,8 +1117,9 @@ public class MiscUtils {
 
     /**
      * Imitates the damage increasement by things like Strength potion and Sharpness|Power enchantments.
-     * @param base - The damaged Entity
-     * @param dam - the damage source
+     * 
+     * @param base   - The damaged Entity
+     * @param dam    - the damage source
      * @param amount - the amount of the damage
      * @return New amount of damage(the old one reduced by armor)
      */
@@ -1154,8 +1160,9 @@ public class MiscUtils {
 
     /**
      * Damages the given Entity ignoring the Forge EntityHurt and EntityBeeingDamaged events.
-     * @param base - The damaged Entity
-     * @param dam - the damage source
+     * 
+     * @param base   - The damaged Entity
+     * @param dam    - the damage source
      * @param amount - the amount of the damage
      */
     public static void damageEntityIgnoreEvent(EntityLivingBase base, DamageSource dam, float amount) {
@@ -1177,19 +1184,24 @@ public class MiscUtils {
     }
 
     /**
-     * Allows changes of variables declared like private final || private static final. Advanced. Do not use if you do not know what you are doing!
-     * Sometimes considered as a dirty hacking of the java code. I agree. There is nothing more dirty, than just removing the FINAL modifier of the variable. It's like Java can't even do anything, no matter the protection given.
-     * This should not be done. However, in vanilla MC it is pretty much the only way to do so, so I can't help it.
-     * The only thing, that would be worse is using ASM to remotely change the compiled final variable. That is the most disgusting thing you can do with Java, I believe.
+     * Allows changes of variables declared like private final || private static final. Advanced. Do not use if you do
+     * not know what you are doing! Sometimes considered as a dirty hacking of the java code. I agree. There is nothing
+     * more dirty, than just removing the FINAL modifier of the variable. It's like Java can't even do anything, no
+     * matter the protection given. This should not be done. However, in vanilla MC it is pretty much the only way to do
+     * so, so I can't help it. The only thing, that would be worse is using ASM to remotely change the compiled final
+     * variable. That is the most disgusting thing you can do with Java, I believe.
+     * 
      * @param classToAccess - the class in wich you are changing the variable
-     * @param instance - if you want to modify non-static field you should put the instance of the class here. Leave null for static
-     * @param value - what you actually want to be set in the variable field
-     * @param fieldNames - the names of the field you are changing. Should be both for obfuscated and compiled code.
+     * @param instance      - if you want to modify non-static field you should put the instance of the class here.
+     *                      Leave null for static
+     * @param value         - what you actually want to be set in the variable field
+     * @param fieldNames    - the names of the field you are changing. Should be both for obfuscated and compiled code.
      */
-    public static void setPrivateFinalValue(
-            Class<Potion> classToAccess, Object instance, Object value, String fieldNames[]) {
+    public static void setPrivateFinalValue(Class<Potion> classToAccess, Object instance, Object value,
+            String fieldNames[]) {
         Field field = ReflectionHelper.findField(
-                classToAccess, ObfuscationReflectionHelper.remapFieldNames(classToAccess.getName(), fieldNames));
+                classToAccess,
+                ObfuscationReflectionHelper.remapFieldNames(classToAccess.getName(), fieldNames));
         try {
             Field modifiersField = Field.class.getDeclaredField("modifiers");
             modifiersField.setAccessible(true);
@@ -1201,7 +1213,9 @@ public class MiscUtils {
     }
 
     /**
-     * Extends the default mc potionArray(which is declared as public static final Potion[] potionTypes = new Potion[32]) by the given amount
+     * Extends the default mc potionArray(which is declared as public static final Potion[] potionTypes = new
+     * Potion[32]) by the given amount
+     * 
      * @param byAmount - how much to extends for
      * @return the first free index in the new potionArray.
      */
@@ -1213,7 +1227,7 @@ public class MiscUtils {
 
             Potion potionTypes[] = new Potion[potionsOffset + byAmount];
             System.arraycopy(Potion.potionTypes, 0, potionTypes, 0, potionsOffset);
-            setPrivateFinalValue(Potion.class, null, potionTypes, new String[] {"potionTypes", "field_76425_a", "a"});
+            setPrivateFinalValue(Potion.class, null, potionTypes, new String[] { "potionTypes", "field_76425_a", "a" });
             pStart = potionsOffset++ - 1;
         } else {
             for (int i = 0; i < Potion.potionTypes.length; ++i) {
@@ -1227,10 +1241,11 @@ public class MiscUtils {
 
     /**
      * Sets the block at the given coordinates to unbreakable || breakable
-     * @param w - the World
-     * @param x - the x of the block
-     * @param y - the y of the block
-     * @param z - the z of the block
+     * 
+     * @param w      - the World
+     * @param x      - the x of the block
+     * @param y      - the y of the block
+     * @param z      - the z of the block
      * @param remove - should actually set the block to breakable(true) of to unbreakable(false)
      */
     public static void setBlockUnbreakable(World w, int x, int y, int z, boolean remove) {
@@ -1250,6 +1265,7 @@ public class MiscUtils {
 
     /**
      * Checks if the block at the given coordinates is unbreakable
+     * 
      * @param w - the World
      * @param x - the x of the block
      * @param y - the y of the block
@@ -1266,41 +1282,37 @@ public class MiscUtils {
     }
 
     /**
-     * Sends the packet to the server, that notifies the server about GUI button pressed. This can be actually used for any GUI, not only in world, but why would you like to do it?
-     * @param buttonID - the ID on the button in the code. Can be get via yourGuiButton.id
+     * Sends the packet to the server, that notifies the server about GUI button pressed. This can be actually used for
+     * any GUI, not only in world, but why would you like to do it?
+     * 
+     * @param buttonID    - the ID on the button in the code. Can be get via yourGuiButton.id
      * @param parentClass - the GUI class, that contains the button
      * @param buttonClass - the GUI class of the button
-     * @param presser - the player, who presses the button. Usually Minecraft.getMinecraft().thePlayer but sometimes you may want to send packets of other SMP players(maybe?)
+     * @param presser     - the player, who presses the button. Usually Minecraft.getMinecraft().thePlayer but sometimes
+     *                    you may want to send packets of other SMP players(maybe?)
      */
     @SideOnly(Side.CLIENT)
-    public static void handleButtonPress(
-            int buttonID,
-            Class<? extends Gui> parentClass,
-            Class<? extends GuiButton> buttonClass,
-            EntityPlayer presser,
-            int bX,
-            int bY,
-            int bZ) {
+    public static void handleButtonPress(int buttonID, Class<? extends Gui> parentClass,
+            Class<? extends GuiButton> buttonClass, EntityPlayer presser, int bX, int bY, int bZ) {
         handleButtonPress(buttonID, parentClass, buttonClass, presser, bX, bY, bZ, "||data:no data");
     }
 
     /**
-     * Sends the packet to the server, that notifies the server about GUI button pressed. This can be actually used for any GUI, not only in world, but why would you like to do it?
-     * @param buttonID - the ID on the button in the code. Can be get via yourGuiButton.id
-     * @param parentClass - the GUI class, that contains the button
-     * @param buttonClass - the GUI class of the button
-     * @param presser - the player, who presses the button. Usually Minecraft.getMinecraft().thePlayer but sometimes you may want to send packets of other SMP players(maybe?)
-     * @param additionalData - Some additional data, that you might want to carry around. Should be a String, representing the DummyData, otherwise will get added tp the Z coordinate and make it unreadable.
+     * Sends the packet to the server, that notifies the server about GUI button pressed. This can be actually used for
+     * any GUI, not only in world, but why would you like to do it?
+     * 
+     * @param buttonID       - the ID on the button in the code. Can be get via yourGuiButton.id
+     * @param parentClass    - the GUI class, that contains the button
+     * @param buttonClass    - the GUI class of the button
+     * @param presser        - the player, who presses the button. Usually Minecraft.getMinecraft().thePlayer but
+     *                       sometimes you may want to send packets of other SMP players(maybe?)
+     * @param additionalData - Some additional data, that you might want to carry around. Should be a String,
+     *                       representing the DummyData, otherwise will get added tp the Z coordinate and make it
+     *                       unreadable.
      */
     @SideOnly(Side.CLIENT)
-    public static void handleButtonPress(
-            int buttonID,
-            Class<? extends Gui> parentClass,
-            Class<? extends GuiButton> buttonClass,
-            EntityPlayer presser,
-            int bX,
-            int bY,
-            int bZ,
+    public static void handleButtonPress(int buttonID, Class<? extends Gui> parentClass,
+            Class<? extends GuiButton> buttonClass, EntityPlayer presser, int bX, int bY, int bZ,
             String additionalData) {
         String dataString = "||mod:DummyCore.guiButton";
         DummyData id = new DummyData("id", buttonID);
@@ -1325,18 +1337,20 @@ public class MiscUtils {
 
     /**
      * Searches for the first block, that matches the given condition at the given coordinates in the given Y range.
-     * @param w - the WorldObj where we are searching the block at
-     * @param toSearch - the block that we are searching for
-     * @param x - the X coordinate
-     * @param z - the Z coordinate
-     * @param maxY - max Y value to search.
-     * @param minY - min Y value to search
-     * @param metadata - the metadata of the block to search. can be -1 or OreDectionary.WILDCARD_VALUE to ignore metadata
+     * 
+     * @param w                  - the WorldObj where we are searching the block at
+     * @param toSearch           - the block that we are searching for
+     * @param x                  - the X coordinate
+     * @param z                  - the Z coordinate
+     * @param maxY               - max Y value to search.
+     * @param minY               - min Y value to search
+     * @param metadata           - the metadata of the block to search. can be -1 or OreDectionary.WILDCARD_VALUE to
+     *                           ignore metadata
      * @param shouldHaveAirAbove - should the block that we find have only air blocks above it
      * @return the actual Y coordinate, or -1 if no blocks were found.
      */
-    public static int search_firstBlock(
-            World w, Block toSearch, int x, int z, int maxY, int minY, int metadata, boolean shouldHaveAirAbove) {
+    public static int search_firstBlock(World w, Block toSearch, int x, int z, int maxY, int minY, int metadata,
+            boolean shouldHaveAirAbove) {
         int y = maxY;
         while (y > minY) {
             Block b = w.getBlock(x, y, z);

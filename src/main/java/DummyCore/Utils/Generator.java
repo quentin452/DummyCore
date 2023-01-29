@@ -1,6 +1,7 @@
 package DummyCore.Utils;
 
 import java.util.ArrayList;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.AxisAlignedBB;
@@ -8,6 +9,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 public class Generator {
+
     public static final Generator instance = new Generator();
 
     public World worldObj;
@@ -209,13 +211,11 @@ public class Generator {
         double nextXn = 0.0D;
         boolean filled = true;
 
-        fX:
-        for (int x = 0; x <= ceilRadiusX; x++) {
+        fX: for (int x = 0; x <= ceilRadiusX; x++) {
             double xn = nextXn;
             nextXn = (double) (x + 1) * invRadiusX;
             double nextYn = 0.0D;
-            fZ:
-            for (int y = 0; y <= ceilRadiusY; y++) {
+            fZ: for (int y = 0; y <= ceilRadiusY; y++) {
                 double yn = nextYn;
                 nextYn = (double) (y + 1) * invRadiusY;
                 double nextZn = 0.0D;
@@ -228,10 +228,10 @@ public class Generator {
                         if (y == 0) break fX;
                         else break fZ;
                     }
-                    if (!filled
-                            && lengthSq(nextXn, yn, zn) <= 1.0D
+                    if (!filled && lengthSq(nextXn, yn, zn) <= 1.0D
                             && lengthSq(xn, nextYn, zn) <= 1.0D
-                            && lengthSq(xn, yn, nextZn) <= 1.0D) continue;
+                            && lengthSq(xn, yn, nextZn) <= 1.0D)
+                        continue;
 
                     block(
                             MathHelper.floor_float(dx + x),
@@ -302,8 +302,7 @@ public class Generator {
         int ceilRadiusX = (int) Math.ceil(radiusX);
         int ceilRadiusZ = (int) Math.ceil(radiusZ);
         double nextXn = 0.0D;
-        D:
-        for (int x = 0; x <= ceilRadiusX; x++) {
+        D: for (int x = 0; x <= ceilRadiusX; x++) {
             double xn = nextXn;
             nextXn = (double) (x + 1) * invRadiusX;
             double nextZn = 0.0D;
@@ -311,9 +310,8 @@ public class Generator {
                 double zn = nextZn;
                 nextZn = (double) (z + 1) * invRadiusZ;
                 double distanceSq = lengthSq(xn, zn);
-                if (distanceSq > 1.0D)
-                    if (z == 0) break D;
-                    else break;
+                if (distanceSq > 1.0D) if (z == 0) break D;
+                else break;
                 if (!filled && lengthSq(nextXn, zn) <= 1.0D && lengthSq(xn, nextZn) <= 1.0D) continue;
 
                 for (int y = 0; y < height; y++) {
@@ -371,8 +369,7 @@ public class Generator {
         int ceilRadiusX = (int) Math.ceil(radiusX);
         int ceilRadiusZ = (int) Math.ceil(radiusZ);
         double nextXn = 0.0D;
-        D:
-        for (int x = 0; x <= ceilRadiusX; x++) {
+        D: for (int x = 0; x <= ceilRadiusX; x++) {
             double xn = nextXn;
             nextXn = (double) (x + 1) * invRadiusX;
             double nextZn = 0.0D;
@@ -380,9 +377,8 @@ public class Generator {
                 double zn = nextZn;
                 nextZn = (double) (z + 1) * invRadiusZ;
                 double distanceSq = lengthSq(xn, zn);
-                if (distanceSq > 1.0D)
-                    if (z == 0) break D;
-                    else break;
+                if (distanceSq > 1.0D) if (z == 0) break D;
+                else break;
                 if (!filled && lengthSq(nextXn, zn) <= 1.0D && lengthSq(xn, nextZn) <= 1.0D) continue;
 
                 for (int y = 0; y < height; y++) {
@@ -432,13 +428,11 @@ public class Generator {
         double nextXn = 0.0D;
         boolean filled = false;
 
-        fX:
-        for (int x = 0; x <= ceilRadiusX; x++) {
+        fX: for (int x = 0; x <= ceilRadiusX; x++) {
             double xn = nextXn;
             nextXn = (double) (x + 1) * invRadiusX;
             double nextYn = 0.0D;
-            fZ:
-            for (int y = 0; y <= ceilRadiusY; y++) {
+            fZ: for (int y = 0; y <= ceilRadiusY; y++) {
                 double yn = nextYn;
                 nextYn = (double) (y + 1) * invRadiusY;
                 double nextZn = 0.0D;
@@ -451,10 +445,10 @@ public class Generator {
                         if (y == 0) break fX;
                         else break fZ;
                     }
-                    if (!filled
-                            && lengthSq(nextXn, yn, zn) <= 1.0D
+                    if (!filled && lengthSq(nextXn, yn, zn) <= 1.0D
                             && lengthSq(xn, nextYn, zn) <= 1.0D
-                            && lengthSq(xn, yn, nextZn) <= 1.0D) continue;
+                            && lengthSq(xn, yn, nextZn) <= 1.0D)
+                        continue;
 
                     block(
                             MathHelper.floor_float(dx + x),
@@ -498,23 +492,29 @@ public class Generator {
         gen();
 
         // Bottom
-        addCuboid(AxisAlignedBB.getBoundingBox(
-                genBox.minX, genBox.minY, genBox.minZ, genBox.maxX, genBox.minY, genBox.maxZ));
+        addCuboid(
+                AxisAlignedBB
+                        .getBoundingBox(genBox.minX, genBox.minY, genBox.minZ, genBox.maxX, genBox.minY, genBox.maxZ));
         // Top
-        addCuboid(AxisAlignedBB.getBoundingBox(
-                genBox.minX, genBox.maxY, genBox.minZ, genBox.maxX, genBox.maxY, genBox.maxZ));
+        addCuboid(
+                AxisAlignedBB
+                        .getBoundingBox(genBox.minX, genBox.maxY, genBox.minZ, genBox.maxX, genBox.maxY, genBox.maxZ));
         // X Neg
-        addCuboid(AxisAlignedBB.getBoundingBox(
-                genBox.minX, genBox.minY, genBox.minZ, genBox.minX, genBox.maxY, genBox.maxZ));
+        addCuboid(
+                AxisAlignedBB
+                        .getBoundingBox(genBox.minX, genBox.minY, genBox.minZ, genBox.minX, genBox.maxY, genBox.maxZ));
         // X Pos
-        addCuboid(AxisAlignedBB.getBoundingBox(
-                genBox.maxX, genBox.minY, genBox.minZ, genBox.maxX, genBox.maxY, genBox.maxZ));
+        addCuboid(
+                AxisAlignedBB
+                        .getBoundingBox(genBox.maxX, genBox.minY, genBox.minZ, genBox.maxX, genBox.maxY, genBox.maxZ));
         // Z Neg
-        addCuboid(AxisAlignedBB.getBoundingBox(
-                genBox.minX, genBox.minY, genBox.minZ, genBox.maxX, genBox.maxY, genBox.minZ));
+        addCuboid(
+                AxisAlignedBB
+                        .getBoundingBox(genBox.minX, genBox.minY, genBox.minZ, genBox.maxX, genBox.maxY, genBox.minZ));
         // Z Pos
-        addCuboid(AxisAlignedBB.getBoundingBox(
-                genBox.minX, genBox.minY, genBox.maxZ, genBox.maxX, genBox.maxY, genBox.maxZ));
+        addCuboid(
+                AxisAlignedBB
+                        .getBoundingBox(genBox.minX, genBox.minY, genBox.maxZ, genBox.maxX, genBox.maxY, genBox.maxZ));
     }
 
     public boolean block(int x, int y, int z) {

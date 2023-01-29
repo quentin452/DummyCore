@@ -7,6 +7,7 @@ package DummyCore.Utils;
  * @Description Used to work with multi-colored light system.
  */
 public enum EnumLightColor {
+
     BLACK(51, 51, 51),
     RED(255, 51, 51),
     GREEN(51, 255, 51),

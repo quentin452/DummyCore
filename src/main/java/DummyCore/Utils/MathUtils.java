@@ -10,13 +10,16 @@ import java.util.Random;
  *
  */
 public class MathUtils {
+
     /**
      * Used to get the size of a texture in pixels using current values. Very useful in any kind of progress bars in GUI
+     * 
      * @version From DummyCore 1.0
-     * @param current - the current value
-     * @param max - the maximum value
+     * @param current     - the current value
+     * @param max         - the maximum value
      * @param textureSize - the maximum texture size
-     * @return Percentage-based int. For example, if the textureSize is 50, current is 100 and max is 200 this will return 25 - that is 50% of your texture size.
+     * @return Percentage-based int. For example, if the textureSize is 50, current is 100 and max is 200 this will
+     *         return 25 - that is 50% of your texture size.
      */
     public static int pixelatedTextureSize(int current, int max, int textureSize) {
         if (current > max) current = max;
@@ -27,9 +30,10 @@ public class MathUtils {
 
     /**
      * Used to get the persentage between 2 numbers
+     * 
      * @version From DummyCore 1.0
      * @param current - the current value
-     * @param max - the maximum value
+     * @param max     - the maximum value
      * @return Percentage-based int. For example, if current is 100 and max is 200 this will return 50.
      */
     public static int getPercentage(int current, int max) {
@@ -39,9 +43,10 @@ public class MathUtils {
 
     /**
      * Used to get the polar-based offset between 2 points in vec2D coord system.
+     * 
      * @version From DummyCore 1.0
      * @param position - the current vec2D
-     * @param angle - the angle of offset
+     * @param angle    - the angle of offset
      * @param distance - the distance the point will be offset
      * @return new Coord2D with offset coords.
      */
@@ -53,6 +58,7 @@ public class MathUtils {
 
     /**
      * Used to get a completely(-1.0D - 1.0D) random double.
+     * 
      * @version From DummyCore 1.0
      * @param rand - the Random, that will randomise this.
      * @return a random Double
@@ -63,6 +69,7 @@ public class MathUtils {
 
     /**
      * Used to get a completely(-1.0F - 1.0F) random float.
+     * 
      * @version From DummyCore 1.0
      * @param rand - the Random, that will randomise this.
      * @return a random Float
@@ -73,6 +80,7 @@ public class MathUtils {
 
     /**
      * Used to calculate difference between 2 float.
+     * 
      * @version From DummyCore 1.0
      * @param pos1 - float #1
      * @param pos2 - float #2
@@ -85,6 +93,7 @@ public class MathUtils {
 
     /**
      * Swaps 2 integers between eachother.
+     * 
      * @version From DummyCore 1.1
      * @param a - first int to swap
      * @param b - second int to swap
@@ -92,11 +101,12 @@ public class MathUtils {
      */
     @Deprecated
     public static int[] swap(int a, int b) {
-        return new int[] {b, a};
+        return new int[] { b, a };
     }
 
     /**
      * Used to convert deciminal number to the Hexadeciminal.
+     * 
      * @version From DummyCore 1.1
      * @param a - the int to be converted
      * @return this integer, converted into hexadeciminal
@@ -107,6 +117,7 @@ public class MathUtils {
 
     /**
      * Used to get the always positive value of a double.
+     * 
      * @version From DummyCore 1.2
      * @param a - the double to be converted
      * @return this double, but positive(>0)

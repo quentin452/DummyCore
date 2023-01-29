@@ -4,7 +4,8 @@ package DummyCore.Utils;
  *
  * @author Modbder
  * @version From DummyCore 1.1
- * @Description Used to work with colors. Requires RGB colors, lesser than 256 to work. Can also convert them to the corresponding Hex value.
+ * @Description Used to work with colors. Requires RGB colors, lesser than 256 to work. Can also convert them to the
+ *              corresponding Hex value.
  */
 public class DummyColor {
 

@@ -1,5 +1,8 @@
 package DummyCore.Utils;
 
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+
 import DummyCore.Core.CoreInitialiser;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
@@ -7,8 +10,6 @@ import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import cpw.mods.fml.relauncher.Side;
 import io.netty.channel.ChannelHandler;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 
 @ChannelHandler.Sharable
 public class DummyTilePacketHandler implements IMessageHandler<DummyPacketIMSG_Tile, IMessage> {

@@ -7,6 +7,7 @@ package DummyCore.Utils;
  * @Description Used to store the distance betwenn 2 points.
  */
 public class DummyDistance {
+
     private final float distance;
 
     public DummyDistance() {

@@ -1,14 +1,16 @@
 package DummyCore.Client;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiMainMenu;
+import net.minecraft.client.gui.GuiScreen;
+
 import DummyCore.Utils.DummyConfig;
 import DummyCore.Utils.DummyData;
 import DummyCore.Utils.IMainMenu;
 import DummyCore.Utils.Notifier;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiMainMenu;
-import net.minecraft.client.gui.GuiScreen;
 
 public class MainMenuRegistry {
 
@@ -60,9 +62,9 @@ public class MainMenuRegistry {
 
     public static GuiScreen getGuiDisplayed() {
         Minecraft mc = Minecraft.getMinecraft();
-        if (mc.currentScreen != null
-                && mc.currentScreen.getClass() != GuiMainMenu.class
-                && mc.currentScreen instanceof IMainMenu) return mc.currentScreen;
+        if (mc.currentScreen != null && mc.currentScreen.getClass() != GuiMainMenu.class
+                && mc.currentScreen instanceof IMainMenu)
+            return mc.currentScreen;
         if (currentScreen != null) return currentScreen;
         try {
             return menuList.get(DummyConfig.getMainMenu()).newInstance();

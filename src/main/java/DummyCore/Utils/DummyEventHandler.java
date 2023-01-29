@@ -1,18 +1,8 @@
 package DummyCore.Utils;
 
-import DummyCore.Client.GuiButton_ChangeGUI;
-import DummyCore.Client.MainMenuRegistry;
-import DummyCore.Events.DummyEvent_OnClientGUIButtonPress;
-import DummyCore.Events.DummyEvent_OnKeyboardKeyPressed_Server;
-import DummyCore.Events.DummyEvent_OnPacketRecieved;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.TickEvent;
-import cpw.mods.fml.common.gameevent.TickEvent.Phase;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Arrays;
 import java.util.List;
+
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -26,6 +16,18 @@ import net.minecraftforge.client.event.GuiScreenEvent.InitGuiEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+
+import DummyCore.Client.GuiButton_ChangeGUI;
+import DummyCore.Client.MainMenuRegistry;
+import DummyCore.Events.DummyEvent_OnClientGUIButtonPress;
+import DummyCore.Events.DummyEvent_OnKeyboardKeyPressed_Server;
+import DummyCore.Events.DummyEvent_OnPacketRecieved;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.TickEvent;
+import cpw.mods.fml.common.gameevent.TickEvent.Phase;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author Modbder
@@ -63,8 +65,14 @@ public class DummyEventHandler {
     @SubscribeEvent
     public void onMainMenuGUISetup(InitGuiEvent.Post event) {
         if (event.gui instanceof IMainMenu) {
-            event.buttonList.add(new GuiButton_ChangeGUI(
-                    65535, event.gui.width / 2 + 104, event.gui.height / 4 + 24 + 72, 100, 20, "Change Main Menu"));
+            event.buttonList.add(
+                    new GuiButton_ChangeGUI(
+                            65535,
+                            event.gui.width / 2 + 104,
+                            event.gui.height / 4 + 24 + 72,
+                            100,
+                            20,
+                            "Change Main Menu"));
         }
     }
 
@@ -136,8 +144,8 @@ public class DummyEventHandler {
                         MinecraftServer server = MinecraftServer.getServer();
                         ServerConfigurationManager manager = server.getConfigurationManager();
                         EntityPlayer player = manager.func_152612_a(username);
-                        MinecraftForge.EVENT_BUS.post(
-                                new DummyEvent_OnKeyboardKeyPressed_Server(id, name, player, pressed));
+                        MinecraftForge.EVENT_BUS
+                                .post(new DummyEvent_OnKeyboardKeyPressed_Server(id, name, player, pressed));
                     }
                 }
                 if (modData.fieldName.equalsIgnoreCase("mod")
@@ -175,8 +183,8 @@ public class DummyEventHandler {
             event.toolTip.add(MiscUtils.descriptionCTable.get(unlocName) + MiscUtils.descriptionTable.get(unlocName));
         } else {
             stack.getItem();
-            List<? extends Object> list =
-                    Arrays.asList(Item.itemRegistry.getNameForObject(stack.getItem()), stack.getItemDamage());
+            List<? extends Object> list = Arrays
+                    .asList(Item.itemRegistry.getNameForObject(stack.getItem()), stack.getItemDamage());
             if (MiscUtils.descriptionNTable.containsKey(list)) {
                 event.toolTip.add(MiscUtils.descriptionNCTable.get(list) + MiscUtils.descriptionNTable.get(list));
             }

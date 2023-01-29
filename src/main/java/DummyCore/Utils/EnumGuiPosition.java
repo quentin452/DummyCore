@@ -2,6 +2,7 @@ package DummyCore.Utils;
 
 @Deprecated
 public enum EnumGuiPosition {
+
     TOPLEFT,
     TOPRIGHT,
     BOTLEFT,

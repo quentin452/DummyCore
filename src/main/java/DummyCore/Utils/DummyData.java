@@ -4,9 +4,11 @@ package DummyCore.Utils;
  *
  * @author Modbder
  * @version From DummyCore 1.2
- * @Description used to store almost any kind of variable using a special Data. When working, remember, that you can store any Object to the corresponding name.
+ * @Description used to store almost any kind of variable using a special Data. When working, remember, that you can
+ *              store any Object to the corresponding name.
  */
 public class DummyData {
+
     public final String fieldName;
     public final String fieldValue;
 

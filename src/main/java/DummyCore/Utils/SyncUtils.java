@@ -26,14 +26,20 @@ public class SyncUtils {
                 String modid = syncID.substring(0, indexOfStrip);
                 String dataName = syncID.substring(indexOfStrip + 1);
                 if (MiscUtils.registeredServerWorldData.containsKey(modid + "|" + dataName)) {
-                    String dataString = "||mod:DummyCore.InfoSync" + "||" + modid + ":" + dataName + "||ddata:"
+                    String dataString = "||mod:DummyCore.InfoSync" + "||"
+                            + modid
+                            + ":"
+                            + dataName
+                            + "||ddata:"
                             + MiscUtils.registeredServerWorldData.get(modid + "|" + dataName);
                     DummyPacketIMSG simplePacket = new DummyPacketIMSG(dataString);
                     DummyPacketHandler.sendToAll(simplePacket);
                 } else {
                     Notifier.notifyCustomMod(
                             modid,
-                            "The sync packet for data " + modid + "|" + dataName
+                            "The sync packet for data " + modid
+                                    + "|"
+                                    + dataName
                                     + " could not be generated - the requested server data does not exist!");
                 }
             }
@@ -47,15 +53,23 @@ public class SyncUtils {
                 String modid = syncID.substring(indexOfPlayer + 1, indexOfStrip);
                 String dataName = syncID.substring(indexOfStrip + 1);
                 if (MiscUtils.registeredServerData.containsKey(playerName + "_" + modid + "|" + dataName)) {
-                    String dataString = "||mod:DummyCore.PlayerInfoSync" + "||" + "playerName:" + playerName + "||"
-                            + modid + ":" + dataName + "||ddata:"
+                    String dataString = "||mod:DummyCore.PlayerInfoSync" + "||"
+                            + "playerName:"
+                            + playerName
+                            + "||"
+                            + modid
+                            + ":"
+                            + dataName
+                            + "||ddata:"
                             + MiscUtils.registeredServerData.get(playerName + "_" + modid + "|" + dataName);
                     DummyPacketIMSG simplePacket = new DummyPacketIMSG(dataString);
                     DummyPacketHandler.sendToAll(simplePacket);
                 } else {
                     Notifier.notifyCustomMod(
                             modid,
-                            "The sync packet for data " + playerName + "_" + modid
+                            "The sync packet for data " + playerName
+                                    + "_"
+                                    + modid
                                     + "could not be generated - the requested server data does not exist!");
                 }
             }

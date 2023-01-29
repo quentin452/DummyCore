@@ -2,12 +2,14 @@ package DummyCore.Client;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+
 import org.lwjgl.opengl.GL11;
 
 public class GuiCommon extends GuiContainer {
@@ -15,8 +17,7 @@ public class GuiCommon extends GuiContainer {
     public List<GuiElement> elementList = new ArrayList<GuiElement>();
     public TileEntity genericTile;
     public ResourceLocation guiGenLocation = new ResourceLocation("textures/gui/container/dispenser.png");
-    public ResourceLocation slotLocation = new ResourceLocation("textures/gui/container/dispenser.png");
-    ;
+    public ResourceLocation slotLocation = new ResourceLocation("textures/gui/container/dispenser.png");;
 
     public GuiCommon(Container c) {
         super(c);

@@ -7,6 +7,7 @@ package DummyCore.Utils;
  * @Description Used to check, if the float is inbetween 2 others.
  */
 public class DummyBounds {
+
     private final float min;
     private final float max;
 

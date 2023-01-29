@@ -10,10 +10,12 @@ import java.util.List;
  * @Description used to store almost any kind of variable in a single String instance.
  */
 public class DataStorage {
+
     private static String dataString = "";
 
     /**
      * Adds the given DummyData to the data string
+     * 
      * @version From DummyCore 1.2
      * @param data - the data to be added to the string
      */
@@ -22,7 +24,9 @@ public class DataStorage {
     }
 
     /**
-     * Returns the data string, with all data written to it. Also resets the string, so this should be used only once, after you have stored all your data.
+     * Returns the data string, with all data written to it. Also resets the string, so this should be used only once,
+     * after you have stored all your data.
+     * 
      * @version From DummyCore 1.2
      * @return Correctly formated DataString
      */
@@ -34,6 +38,7 @@ public class DataStorage {
 
     /**
      * Used to get your DummyData from the correctly formated string.
+     * 
      * @version From DummyCore 1.2
      * @param s - the string to extract data from
      * @return - An array of all data from the given string
@@ -45,8 +50,7 @@ public class DataStorage {
         for (int i = 0; i < s.length(); ++i) {
             if (i + 2 < s.length() && s.substring(i, i + 2).contains("||")) {
                 int size = 0;
-                ForSize:
-                for (int i1 = i; i1 < s.length(); ++i1) {
+                ForSize: for (int i1 = i; i1 < s.length(); ++i1) {
                     if (s.charAt(i1) == ':') break ForSize;
                     ++size;
                 }
@@ -54,8 +58,7 @@ public class DataStorage {
             }
             if (i + 1 < s.length() && s.substring(i, i + 1).contains(":")) {
                 int size = 0;
-                ForSize:
-                for (int i1 = i; i1 < s.length(); ++i1) {
+                ForSize: for (int i1 = i; i1 < s.length(); ++i1) {
                     if (s.charAt(i1) == '|') break ForSize;
                     ++size;
                 }

@@ -1,8 +1,9 @@
 package DummyCore.Utils;
 
-import com.mojang.authlib.GameProfile;
 import java.util.Hashtable;
 import java.util.UUID;
+
+import com.mojang.authlib.GameProfile;
 
 public class DummyFakePlayerFactory {
 

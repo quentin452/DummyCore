@@ -1,14 +1,9 @@
 package DummyCore.Utils;
 
-import DummyCore.Client.GuiMainMenuOld;
-import DummyCore.Client.GuiMainMenuVanilla;
-import DummyCore.Client.MainMenuRegistry;
-import DummyCore.Core.CoreInitialiser;
-import DummyCore.CreativeTabs.CreativePageBlocks;
-import DummyCore.CreativeTabs.CreativePageItems;
 import java.lang.reflect.Constructor;
 import java.util.Hashtable;
 import java.util.Random;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.client.renderer.EntityRenderer;
@@ -22,9 +17,17 @@ import net.minecraft.network.INetHandler;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import DummyCore.Client.GuiMainMenuOld;
+import DummyCore.Client.GuiMainMenuVanilla;
+import DummyCore.Client.MainMenuRegistry;
+import DummyCore.Core.CoreInitialiser;
+import DummyCore.CreativeTabs.CreativePageBlocks;
+import DummyCore.CreativeTabs.CreativePageItems;
 
 public class NetProxy_Client extends NetProxy_Server {
 
@@ -77,8 +80,11 @@ public class NetProxy_Client extends NetProxy_Server {
             if (rLoc == null) {
                 er.deactivateShader();
             } else {
-                er.theShaderGroup =
-                        new ShaderGroup(mc.getTextureManager(), mc.getResourceManager(), mc.getFramebuffer(), rLoc);
+                er.theShaderGroup = new ShaderGroup(
+                        mc.getTextureManager(),
+                        mc.getResourceManager(),
+                        mc.getFramebuffer(),
+                        rLoc);
                 er.theShaderGroup.createBindFramebuffers(mc.displayWidth, mc.displayHeight);
             }
         } catch (Exception e) {

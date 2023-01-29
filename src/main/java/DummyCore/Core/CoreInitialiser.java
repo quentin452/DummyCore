@@ -1,5 +1,11 @@
 package DummyCore.Core;
 
+import java.lang.reflect.Method;
+
+import net.minecraft.command.CommandHandler;
+import net.minecraft.server.MinecraftServer;
+import net.minecraftforge.common.MinecraftForge;
+
 import DummyCore.Utils.CommandTransfer;
 import DummyCore.Utils.DummyConfig;
 import DummyCore.Utils.DummyDataUtils;
@@ -20,10 +26,6 @@ import cpw.mods.fml.common.event.FMLServerStoppedEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;
-import java.lang.reflect.Method;
-import net.minecraft.command.CommandHandler;
-import net.minecraft.server.MinecraftServer;
-import net.minecraftforge.common.MinecraftForge;
 
 /**
  * @author Modbder
@@ -60,8 +62,7 @@ public class CoreInitialiser {
         network.registerMessage(DummyTilePacketHandler.class, DummyPacketIMSG_Tile.class, 1, Side.SERVER);
         network.registerMessage(DummyTilePacketHandler.class, DummyPacketIMSG_Tile.class, 1, Side.CLIENT);
         try {
-            Core.registerModAbsolute(
-                    getClass(), "DummyCore", e.getModConfigurationDirectory().getAbsolutePath(), cfg);
+            Core.registerModAbsolute(getClass(), "DummyCore", e.getModConfigurationDirectory().getAbsolutePath(), cfg);
         } catch (Exception ex) {
             System.out.println("Oh, come on Forge. If something has got wrong here - this is it.");
             System.out.println("No, reriously, if an exception is bbeing thrown here - nothing is going to load");

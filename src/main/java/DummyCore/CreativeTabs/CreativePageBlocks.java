@@ -1,22 +1,24 @@
 package DummyCore.CreativeTabs;
 
-import DummyCore.Core.CoreInitialiser;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.ArrayList;
 import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+import DummyCore.Core.CoreInitialiser;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 /**
  * @version From DummyCore 1.0
- * @author Modbder
- * Do not change anything here! Used to work with Blocks.
+ * @author Modbder Do not change anything here! Used to work with Blocks.
  */
 public final class CreativePageBlocks extends CreativeTabs {
+
     public int delayTime = 0;
     public ItemStack displayStack = new ItemStack(Blocks.crafting_table, 1, 0);
     private final String tabLabel;
@@ -37,8 +39,7 @@ public final class CreativePageBlocks extends CreativeTabs {
         ++tries;
         if (this.blockList.isEmpty() && tries <= 1) {
             for (int t = 0; t < Block.blockRegistry.getKeys().size(); ++t) {
-                Block b = Block.getBlockFromName(
-                        (String) Block.blockRegistry.getKeys().toArray()[t]);
+                Block b = Block.getBlockFromName((String) Block.blockRegistry.getKeys().toArray()[t]);
                 if (b != null && b.getCreativeTabToDisplayOn() == this) {
                     Item itm = Item.getItemFromBlock(b);
                     if (itm != null) {

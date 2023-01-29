@@ -1,9 +1,10 @@
 package DummyCore.Client;
 
-import DummyCore.Utils.DummyData;
-import cpw.mods.fml.client.GuiScrollingList;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
+
+import DummyCore.Utils.DummyData;
+import cpw.mods.fml.client.GuiScrollingList;
 
 public class GuiSlotMenuList extends GuiScrollingList {
 
@@ -42,19 +43,15 @@ public class GuiSlotMenuList extends GuiScrollingList {
     @Override
     protected void drawSlot(int listIndex, int var2, int var3, int var4, Tessellator var5) {
         DummyData data = MainMenuRegistry.menuInfoLst.get(listIndex);
-        this.parent
-                .getFontRenderer()
-                .drawString(
-                        this.parent.getFontRenderer().trimStringToWidth(data.fieldName, listWidth - 10),
-                        this.left + 3,
-                        var3 + 2,
-                        0xFFFFFF);
-        this.parent
-                .getFontRenderer()
-                .drawString(
-                        this.parent.getFontRenderer().trimStringToWidth(data.fieldValue, listWidth - 10),
-                        this.left + 3,
-                        var3 + 12,
-                        0xCCCCCC);
+        this.parent.getFontRenderer().drawString(
+                this.parent.getFontRenderer().trimStringToWidth(data.fieldName, listWidth - 10),
+                this.left + 3,
+                var3 + 2,
+                0xFFFFFF);
+        this.parent.getFontRenderer().drawString(
+                this.parent.getFontRenderer().trimStringToWidth(data.fieldValue, listWidth - 10),
+                this.left + 3,
+                var3 + 12,
+                0xCCCCCC);
     }
 }

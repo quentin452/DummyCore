@@ -1,7 +1,8 @@
 package DummyCore.Events;
 
-import cpw.mods.fml.common.eventhandler.Event;
 import net.minecraft.entity.player.EntityPlayer;
+
+import cpw.mods.fml.common.eventhandler.Event;
 
 public class DummyEvent_OnKeyboardKeyPressed_Server extends Event {
 

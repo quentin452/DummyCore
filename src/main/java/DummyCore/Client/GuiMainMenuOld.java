@@ -1,15 +1,12 @@
 package DummyCore.Client;
 
-import DummyCore.Utils.IMainMenu;
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
-import cpw.mods.fml.common.FMLCommonHandler;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
@@ -20,13 +17,20 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.ForgeHooksClient;
+
 import org.apache.commons.io.Charsets;
 import org.lwjgl.opengl.GL11;
 
+import DummyCore.Utils.IMainMenu;
+
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import cpw.mods.fml.common.FMLCommonHandler;
+
 public class GuiMainMenuOld extends GuiMainMenu implements IMainMenu {
 
-    private static final ResourceLocation minecraftTitleTextures =
-            new ResourceLocation("textures/gui/title/minecraft.png");
+    private static final ResourceLocation minecraftTitleTextures = new ResourceLocation(
+            "textures/gui/title/minecraft.png");
     private String splashText;
     protected static final ResourceLocation buttonTextures = new ResourceLocation("textures/gui/widgets.png");
     private static final Random rand = new Random();
@@ -38,12 +42,10 @@ public class GuiMainMenuOld extends GuiMainMenu implements IMainMenu {
 
         try {
             ArrayList<String> arraylist = new ArrayList<String>();
-            bufferedreader = new BufferedReader(new InputStreamReader(
-                    Minecraft.getMinecraft()
-                            .getResourceManager()
-                            .getResource(splashTexts)
-                            .getInputStream(),
-                    Charsets.UTF_8));
+            bufferedreader = new BufferedReader(
+                    new InputStreamReader(
+                            Minecraft.getMinecraft().getResourceManager().getResource(splashTexts).getInputStream(),
+                            Charsets.UTF_8));
             String s;
 
             while ((s = bufferedreader.readLine()) != null) {
@@ -92,10 +94,8 @@ public class GuiMainMenuOld extends GuiMainMenu implements IMainMenu {
         GL11.glPushMatrix();
         GL11.glTranslatef((float) (this.width / 2 + 90), 70.0F, 0.0F);
         GL11.glRotatef(-20.0F, 0.0F, 0.0F, 1.0F);
-        float f1 = 1.8F
-                - MathHelper.abs(
-                        MathHelper.sin((float) (Minecraft.getSystemTime() % 1000L) / 1000.0F * (float) Math.PI * 2.0F)
-                                * 0.1F);
+        float f1 = 1.8F - MathHelper.abs(
+                MathHelper.sin((float) (Minecraft.getSystemTime() % 1000L) / 1000.0F * (float) Math.PI * 2.0F) * 0.1F);
         f1 = f1 * 100.0F / (float) (this.fontRendererObj.getStringWidth(this.splashText) + 32);
         GL11.glScalef(f1, f1, f1);
         this.drawCenteredString(this.fontRendererObj, this.splashText, 0, -8, -256);
@@ -143,8 +143,7 @@ public class GuiMainMenuOld extends GuiMainMenu implements IMainMenu {
             FontRenderer fontrenderer = mc.fontRenderer;
             mc.getTextureManager().bindTexture(buttonTextures);
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-            boolean field_146123_n = mouseX >= button.xPosition
-                    && mouseY >= button.yPosition
+            boolean field_146123_n = mouseX >= button.xPosition && mouseY >= button.yPosition
                     && mouseX < button.xPosition + button.width
                     && mouseY < button.yPosition + button.height;
             int k = button.getHoverState(field_146123_n);
@@ -152,7 +151,12 @@ public class GuiMainMenuOld extends GuiMainMenu implements IMainMenu {
             OpenGlHelper.glBlendFunc(770, 771, 1, 0);
             GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
             this.drawTexturedModalRect(
-                    button.xPosition, button.yPosition, 0, 46 + k * 20, button.width / 2, button.height);
+                    button.xPosition,
+                    button.yPosition,
+                    0,
+                    46 + k * 20,
+                    button.width / 2,
+                    button.height);
             this.drawTexturedModalRect(
                     button.xPosition + button.width / 2,
                     button.yPosition,
