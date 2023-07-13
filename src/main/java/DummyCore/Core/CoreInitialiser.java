@@ -41,7 +41,7 @@ public class CoreInitialiser {
 
     public static final String modid = "DummyCore";
     public static final String modname = "DummyCore";
-    public static final String version = "GRADLETOKEN_VERSION";
+    public static final String version = Tags.VERSION;
 
     public static CoreInitialiser instance;
     public static DummyConfig cfg = new DummyConfig();
