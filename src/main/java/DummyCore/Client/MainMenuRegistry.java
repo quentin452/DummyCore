@@ -52,7 +52,7 @@ public class MainMenuRegistry {
                 index = menuList.size() - 1;
             }
             DummyConfig.setMainMenu(index);
-            currentScreen = menuList.get(DummyConfig.getMainMenu()).newInstance();
+            currentScreen = menuList.get(DummyConfig.getMainMenu()).getConstructor().newInstance();
             Minecraft.getMinecraft().displayGuiScreen(currentScreen);
         } catch (Exception e) {
             e.printStackTrace();
@@ -67,7 +67,7 @@ public class MainMenuRegistry {
             return mc.currentScreen;
         if (currentScreen != null) return currentScreen;
         try {
-            return menuList.get(DummyConfig.getMainMenu()).newInstance();
+            return menuList.get(DummyConfig.getMainMenu()).getConstructor().newInstance();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
