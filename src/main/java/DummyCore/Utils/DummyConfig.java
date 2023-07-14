@@ -11,6 +11,7 @@ public class DummyConfig implements IDummyConfig {
     public boolean removeMissingTexturesErrors;
     public static boolean enableNotifierLogging;
     public static boolean shouldChangeImage;
+    public static boolean hideSwitchMenuButton;
     public static Configuration cfg;
 
     public void load(Configuration config) {
@@ -19,6 +20,7 @@ public class DummyConfig implements IDummyConfig {
         enableNotifierLogging = config.getBoolean("enableNotifierLogging", "GLOBAL", true, "");
         shouldChangeImage = config.getBoolean("shouldChangeImageInCreativeTabs", "GLOBAL", true, "");
         mainMenuID = config.getInt("mainMenuID", "GLOBAL", 0, 0, Integer.MAX_VALUE, "");
+        hideSwitchMenuButton = config.getBoolean("hideSwitchMenuButton", "GLOBAL", false, "");
         dummyCoreSyncTimer = config.getInt(
                 "syncTimer",
                 "GLOBAL",

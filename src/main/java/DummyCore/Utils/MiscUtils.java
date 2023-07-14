@@ -347,7 +347,6 @@ public class MiscUtils {
      * @param dimId    - the ID of the dimension to look the players.
      * @param distance - the distance at which the players will get found.
      */
-    @SuppressWarnings("unchecked")
     public static void sendPacketToAllAround(World w, Packet pkt, int x, int y, int z, int dimId, double distance) {
         List<EntityPlayer> playerLst = w.getEntitiesWithinAABB(
                 EntityPlayer.class,
@@ -381,7 +380,6 @@ public class MiscUtils {
      * @param w        - the worldObj that we are operating in
      * @param distance - the distance at which the players will get found.
      */
-    @SuppressWarnings("unchecked")
     public static void sendPacketToAll(World w, Packet pkt) {
         List<EntityPlayer> playerLst = w.playerEntities;
         if (!playerLst.isEmpty()) {
@@ -406,7 +404,6 @@ public class MiscUtils {
      * @param pkt   - the packet to send
      * @param dimId - the ID of the dimension to look the players.
      */
-    @SuppressWarnings("unchecked")
     public static void sendPacketToAllInDim(World w, Packet pkt, int dimId) {
         List<EntityPlayer> playerLst = w.playerEntities;
         if (!playerLst.isEmpty()) {

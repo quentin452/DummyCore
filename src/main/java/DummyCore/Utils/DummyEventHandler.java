@@ -64,7 +64,7 @@ public class DummyEventHandler {
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public void onMainMenuGUISetup(InitGuiEvent.Post event) {
-        if (event.gui instanceof IMainMenu) {
+        if (event.gui instanceof IMainMenu && !DummyConfig.hideSwitchMenuButton) {
             event.buttonList.add(
                     new GuiButton_ChangeGUI(
                             65535,

@@ -26,7 +26,6 @@ public class GuiMenuList extends GuiScreen {
     /**
      * Adds the buttons (and other controls) to the screen in question.
      */
-    @SuppressWarnings("unchecked")
     @Override
     public void initGui() {
         for (DummyData data : MainMenuRegistry.menuInfoLst) {
