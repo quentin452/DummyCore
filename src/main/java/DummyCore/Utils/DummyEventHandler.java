@@ -178,18 +178,23 @@ public class DummyEventHandler {
     @SubscribeEvent
     public void onDescrAdded(ItemTooltipEvent event) {
         ItemStack stack = event.itemStack;
-        String unlocName = stack.getUnlocalizedName();
-        if (MiscUtils.descriptionTable.containsKey(unlocName)) {
-            event.toolTip.add(MiscUtils.descriptionCTable.get(unlocName) + MiscUtils.descriptionTable.get(unlocName));
+
+        if (MiscUtils.descriptionTable != null) {
+            String unlocName = stack.getUnlocalizedName();
+            if (MiscUtils.descriptionTable.containsKey(unlocName)) {
+                String description = MiscUtils.descriptionTable.get(unlocName);
+                event.toolTip.add(description);
+            }
         } else {
-            stack.getItem();
-            List<? extends Object> list = Arrays
-                    .asList(Item.itemRegistry.getNameForObject(stack.getItem()), stack.getItemDamage());
+            Item item = stack.getItem();
+            List<?> list = Arrays.asList(Item.itemRegistry.getNameForObject(item), stack.getItemDamage());
+
             if (MiscUtils.descriptionNTable.containsKey(list)) {
                 event.toolTip.add(MiscUtils.descriptionNCTable.get(list) + MiscUtils.descriptionNTable.get(list));
             }
         }
     }
+
 
     @SubscribeEvent
     public void onServerTick(TickEvent.ServerTickEvent event) {
